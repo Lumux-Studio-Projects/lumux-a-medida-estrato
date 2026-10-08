@@ -1,0 +1,37 @@
+{
+  "title": "Refugio Los Encinos",
+  "subtitle": "Vivienda de descanso integrada en ladera boscosa con muros de piedra brasa y terrazas escalonadas.",
+  "category": "Residencial de Montaña",
+  "year": 2024,
+  "location": "Avándaro, Valle de Bravo",
+  "area": "390 m² construidos",
+  "serviceSlug": "arquitectura-residencial",
+  "featured": true,
+  "lead": "Construida adaptándose a la topografía escarpada sin talar un solo árbol maduro. El diseño escalonado permite que cada recámara y área social cuente con ventilación cruzada y vistas ininterrumpidas a las copas de los encinos.",
+  "designDecisions": "Se levantaron muros gavión y muros de piedra braza de canteras locales para conformar las terrazas, mientras que la techumbre invertida de madera recolecta el 100% del agua pluvial para riego y uso doméstico.",
+  "materials": [
+    "Piedra braza de sitio cimentada en seco",
+    "Madera de pino oyamel certificada FSC",
+    "Herrería negra al carbón con puente térmico",
+    "Pisos de barro prensado a mano",
+    "Aislamiento térmico de corcho natural"
+  ],
+  "heroImage": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1800&q=80",
+  "gallery": [
+    {
+      "src": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1400&q=80",
+      "alt": "Terraza principal en voladizo sobre la pendiente boscosa",
+      "caption": "Espacio exterior protegido por voladizo de madera laminada."
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=80",
+      "alt": "Detalle del salón principal con chimenea de piedra",
+      "caption": "Inercia térmica de la chimenea que calefacciona toda la planta."
+    }
+  ],
+  "credits": {
+    "leadArchitect": "Estrato Taller de Arquitectura",
+    "structuralEngineering": "Cálculo Geotécnico de Ladera",
+    "photography": "Registro Visual Lumux Demo"
+  }
+}

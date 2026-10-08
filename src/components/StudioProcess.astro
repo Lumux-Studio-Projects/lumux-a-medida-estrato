@@ -1,0 +1,13 @@
+---
+import AccordionIcon from './AccordionIcon.astro';
+const steps = [
+ ['Escuchar el lugar','Entender cómo vives, recorrer el sitio y observar la luz. El proyecto empieza mucho antes del primer trazo.'],
+ ['Explorar la forma','Trabajamos con croquis, maquetas y materiales para encontrar una respuesta espacial propia.'],
+ ['Resolver el detalle','Traducimos la idea en planos, encuentros y decisiones constructivas. Cada unión tiene una razón.'],
+ ['Acompañar la obra','Seguimos el proyecto en sitio, cuidando que la intención se conserve hasta el último detalle.']
+];
+---
+<section class="process-section page-pad" id="nuestro-proceso">
+ <div class="process-intro"><h2 data-reveal>Del primer trazo<br />a la vida cotidiana.</h2><p>Nuestro proceso es una conversación entre el lugar, la materia y quienes lo habitan.</p><div class="process-photo"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1100&q=85" alt="Un espacio de trabajo lleno de luz natural" width="1100" height="800" loading="lazy" /></div></div>
+ <div class="process-steps">{steps.map(([title,desc],i) => <details name="studio-process" class="process-step" open={i === 0}><summary><span class="step-number">0{i+1}</span><h3>{title}</h3><AccordionIcon /></summary><p>{desc}</p></details>)}</div>
+</section>

@@ -1,0 +1,53 @@
+---
+import ArrowIcon from '../components/ArrowIcon.astro';
+import '../styles/global.css';
+import '../styles/redesign.css';
+import site from '../data/site.json';
+interface Props { title?: string; description?: string; currentPath?: string; immersive?: boolean }
+const { title, description = site.seo.description, currentPath = Astro.url.pathname, immersive = false } = Astro.props;
+const nav = [{label:'Estudio',href:'/estudio'}, {label:'Proyectos',href:'/proyectos'}, {label:'Servicios',href:'/servicios'}, {label:'Contacto',href:'/contacto'}];
+---
+<!doctype html>
+<html lang="es" data-theme="caliza">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content={description} />
+    <title>{title ? `${title} — Estrato` : site.seo.defaultTitle}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Manrope:wght@400;500;600&family=Bodoni+Moda:opsz,wght@6..96,400&display=swap" rel="stylesheet" />
+    <script is:inline>try { document.documentElement.dataset.theme = localStorage.getItem('estrato-theme') === 'basalto' ? 'basalto' : 'caliza'; } catch {}</script>
+  </head>
+  <body class:list={['estrato-site', { immersive }]}>
+    <a class="skip-link" href="#main-content">Saltar al contenido</a>
+    <header class:list={['new-header', { 'header-over-image': immersive }]}>
+      <a class="wordmark" href="/" aria-label="Estrato, inicio"><svg viewBox="0 0 30 30" width="30" height="30" fill="none" aria-hidden="true"><path d="M2 4h26M2 11h19M2 18h26M2 25h19" stroke="currentColor" stroke-width="2" /></svg><span>estrato<span class="wordmark-period">.</span></span></a>
+      <nav class="new-nav" aria-label="Navegación principal">{nav.map(item => <a href={item.href} aria-current={currentPath.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>)}</nav>
+      <div class="nav-tools"><button class="light-switch" aria-label="Cambiar a modo oscuro" aria-pressed="false"><span aria-hidden="true">◐</span></button><span class="language">ES</span><button class="menu-trigger" aria-haspopup="dialog" aria-controls="navigation-dialog">Menú <span aria-hidden="true">☰</span></button></div>
+    </header>
+    <dialog id="navigation-dialog" class="navigation-dialog" data-lenis-prevent>
+      <div class="dialog-top"><span>estrato.</span><button class="menu-close" aria-label="Cerrar menú">Cerrar ×</button></div>
+      <nav aria-label="Menú móvil">{nav.map(item => <a href={item.href}>{item.label}<span aria-hidden="true"><ArrowIcon /></span></a>)}</nav>
+      <p>Ciudad de México · Madrid · Oaxaca</p>
+    </dialog>
+    <main id="main-content"><slot /></main>
+    <footer class="new-footer">
+      <div class="footer-invitation">
+        <p><span class="footer-status" aria-hidden="true"></span> Un nuevo espacio empieza aquí</p>
+        <a href="/contacto">Demos forma<br />a tu idea.<span class="footer-cta-arrow" aria-hidden="true"><ArrowIcon /></span></a>
+      </div>
+      <div class="footer-directory">
+        <div class="footer-contact"><span class="footer-label">Hablemos</span><a href={`mailto:${site.contact.email}`}>{site.contact.email} <ArrowIcon /></a><p>Arquitectura, interiorismo<br />y una manera de habitar.</p></div>
+        <nav class="footer-navigation" aria-label="Navegación del pie de página"><span class="footer-label">Explorar</span>{nav.map(item => <a href={item.href}>{item.label}<ArrowIcon /></a>)}</nav>
+        <div class="footer-locations"><span class="footer-label">Nuestro territorio</span>{site.brand.sedes.map(sede => <p><span>{sede.city}</span><span>{sede.code}</span></p>)}</div>
+      </div>
+      <div class="footer-colophon"><span>© {new Date().getFullYear()} Estrato Taller</span><a href="https://lumuxstudio.com/es" target="_blank" rel="noopener noreferrer">Sitio creado por Lumux Studio <ArrowIcon /></a></div>
+      <p class="demo-disclosure">Estudio y proyectos ficticios. Fotografía de referencia para demostración.</p>
+      <div class="footer-signature" aria-hidden="true"><span class="footer-template-label">Estrato — plantilla de arquitectura</span><div class="footer-wordmark">estrato.</div></div>
+    </footer>
+    <script>import '../scripts/experience';</script>
+  </body>
+</html>

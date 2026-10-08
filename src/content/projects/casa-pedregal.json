@@ -1,0 +1,42 @@
+{
+  "title": "Casa Pedregal",
+  "subtitle": "Un refugio monolítico articulado en torno a tres patios de roca basáltica y jacarandas centenarias.",
+  "category": "Residencial",
+  "year": 2024,
+  "location": "Jardines del Pedregal, Ciudad de México",
+  "area": "540 m² construidos",
+  "serviceSlug": "arquitectura-residencial",
+  "featured": true,
+  "lead": "Ubicada sobre una colada de lava volcánica, Casa Pedregal negocia la pendiente natural del terreno mediante muros masivos de concreto aparente pigmentado en tono arena y pabellones de cristal que se disuelven en el jardín.",
+  "designDecisions": "El proyecto prescinde de pasillos convencionales: la circulación se produce a través de galerías iluminadas cenitalmente que abrazan un patio central. Se empleó roca volcánica extraída de la misma excavación para levantar las bardas perimetrales y los solados exteriores, reduciendo la huella de transporte y anclando la vivienda a su geología de origen.",
+  "materials": [
+    "Concreto aparente pigmentado con arenas locales",
+    "Piedra volcánica basáltica labrada a mano",
+    "Carpintería de roble blanco macizo",
+    "Cancelaría de acero al carbón con perfilería esbelta",
+    "Pisos interiores de terrazo continuo pulido"
+  ],
+  "heroImage": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=80",
+  "gallery": [
+    {
+      "src": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1400&q=80",
+      "alt": "Fachada posterior abierta hacia el jardín y alberca con reflejo",
+      "caption": "Pabellón principal en voladizo sobre la plataforma de roca basáltica."
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=1400&q=80",
+      "alt": "Patio interior con jacaranda y fuente de piedra volcánica",
+      "caption": "El patio central actúa como pulmón bioclimático y articulador de ventilación cruzada."
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=80",
+      "alt": "Espacio interior de doble altura con luz rasante sobre muro de concreto",
+      "caption": "Tratamiento de la luz cenital a lo largo de las distintas horas del día."
+    }
+  ],
+  "credits": {
+    "leadArchitect": "Estrato Taller de Arquitectura",
+    "structuralEngineering": "Gabinete Técnico Estructural MX",
+    "photography": "Fotografía Ficticia de Demostración"
+  }
+}

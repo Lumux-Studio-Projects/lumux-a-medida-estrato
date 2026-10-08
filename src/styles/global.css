@@ -1,0 +1,350 @@
+@import './tokens.css';
+
+/* Importación de fuentes optimizadas de alta jerarquía */
+/* Fonts are loaded by BaseLayout; redesign tokens live in ../../tokens.css. */
+
+/* Reset y base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: var(--transition-theme);
+  text-rendering: optimizeLegibility;
+}
+
+/* Lenis Smooth Scroll Rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Tipografía de títulos */
+h1, h2, h3, h4, .font-serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5.5vw, 4.75rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 3.8vw, 3.25rem);
+}
+
+h3 {
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+}
+
+p {
+  color: var(--color-text-secondary);
+}
+
+/* Clases de contenedor */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 4vw, 3.5rem);
+  padding-right: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 4vw, 3.5rem);
+  padding-right: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+/* ----------------------------------------------------
+   BOTONES Y ACCIONES ARQUITECTÓNICAS (TARQ STUDIO & MR. C)
+   ---------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.85rem 1.65rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  border-radius: var(--radius-xs);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary, .btn-arch {
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-primary);
+  border-color: var(--color-text-primary);
+}
+
+.btn-primary:hover, .btn-arch:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.btn-secondary, .btn-arch-outline {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+
+.btn-secondary:hover, .btn-arch-outline:hover {
+  border-color: var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
+}
+
+.btn-accent {
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+  border-color: var(--color-accent);
+}
+
+.btn-accent:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+/* Enlaces editoriales */
+.link-editorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.25rem;
+  transition: all var(--transition-fast);
+}
+
+.link-editorial:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+  gap: 0.75rem;
+}
+
+/* Etiquetas y cotas arquitectónicas */
+.tag-meta {
+  font-family: var(--font-mono);
+  font-size: 0.725rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Banner de contexto demo */
+.demo-banner {
+  background-color: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.45rem 1.25rem;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.demo-banner a {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ----------------------------------------------------
+   DIVISOR ARQUITECTÓNICO DIAGONAL (TARQ STUDIO SEPARATOR)
+   Línea de dibujo técnico con ángulo oblicuo 45°
+   ---------------------------------------------------- */
+.arch-separator {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  height: 48px;
+  background-color: var(--color-bg-primary);
+  overflow: hidden;
+  user-select: none;
+}
+
+.arch-separator-inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.arch-diagonal-svg {
+  width: 52px;
+  height: 48px;
+  flex-shrink: 0;
+  color: var(--color-text-primary);
+  opacity: 0.35;
+}
+
+.arch-horizontal-rule {
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-border-subtle);
+}
+
+/* ----------------------------------------------------
+   CHIPS DE SEDES (CDMX · MADRID · OAXACA - ESTILO TARQ)
+   ---------------------------------------------------- */
+.sedes-chips-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.sede-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.65rem;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: 0.675rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+.sede-chip .sede-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+}
+
+/* ----------------------------------------------------
+   SCROLL INDICATOR (MR. C RESIDENCES BOCA RATON)
+   ---------------------------------------------------- */
+.scroll-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.scroll-indicator:hover {
+  color: var(--color-text-primary);
+}
+
+.scroll-indicator .scroll-chevron {
+  width: 13px;
+  height: 13px;
+  animation: scrollBounce 2.2s infinite ease-in-out;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* Badge sobrio arquitectónico */
+.arch-badge-clean {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-xs);
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.725rem;
+  letter-spacing: 0.06em;
+}
+
+.arch-badge-clean .badge-star {
+  color: var(--color-accent);
+}
+

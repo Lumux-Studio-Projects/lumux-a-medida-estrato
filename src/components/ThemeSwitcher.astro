@@ -1,0 +1,354 @@
+---
+import themeData from '../data/theme.json';
+---
+
+<div class="theme-switcher-container" id="themeSwitcherRoot">
+  <!-- Botón disparador flotante -->
+  <button 
+    type="button" 
+    class="theme-trigger-btn" 
+    id="themeTriggerBtn"
+    aria-haspopup="dialog"
+    aria-expanded="false"
+    aria-controls="themeModal"
+    title="Explorar paletas de color de la demo"
+  >
+    <span class="palette-icon" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/>
+        <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/>
+        <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/>
+        <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/>
+        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+      </svg>
+    </span>
+    <span class="trigger-label">Personalizar Paleta</span>
+    <span class="current-theme-indicator" id="currentThemeName">Caliza</span>
+  </button>
+
+  <!-- Modal / Popover flotante -->
+  <div 
+    class="theme-modal" 
+    id="themeModal" 
+    role="dialog" 
+    aria-label="Selector de temas cromáticos"
+    hidden
+  >
+    <div class="theme-modal-header">
+      <div>
+        <h4 class="theme-modal-title">Dirección de Marca</h4>
+        <p class="theme-modal-desc">Explora la identidad en 3 atmósferas armónicas.</p>
+      </div>
+      <button type="button" class="theme-close-btn" id="themeCloseBtn" aria-label="Cerrar selector">✕</button>
+    </div>
+
+    <div class="theme-options-list">
+      {themeData.themes.map((t) => (
+        <button 
+          type="button" 
+          class="theme-option-btn" 
+          data-theme-id={t.id}
+          data-theme-label={t.name.split(' ')[0]}
+        >
+          <div class="theme-swatch-preview">
+            <span class="swatch-circle" style={`background-color: ${t.colors.bgPrimary}; border: 1px solid ${t.colors.border};`}></span>
+            <span class="swatch-circle" style={`background-color: ${t.colors.accent};`}></span>
+            <span class="swatch-circle" style={`background-color: ${t.colors.textPrimary};`}></span>
+          </div>
+          <div class="theme-option-info">
+            <span class="theme-option-name">{t.name}</span>
+            <span class="theme-option-sub">{t.subtitle}</span>
+          </div>
+          <span class="theme-check-icon" aria-hidden="true">✓</span>
+        </button>
+      ))}
+    </div>
+
+    <div class="theme-modal-footer">
+      <small>En un sitio a medida Lumux, los tokens se configuran a la identidad exacta de tu negocio.</small>
+    </div>
+  </div>
+</div>
+
+<style>
+  .theme-switcher-container {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 999;
+    font-family: var(--font-sans);
+  }
+
+  .theme-trigger-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    background-color: var(--color-bg-card);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    padding: 0.65rem 1rem;
+    border-radius: 9999px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+
+  .theme-trigger-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+    border-color: var(--color-text-primary);
+  }
+
+  .palette-icon {
+    display: flex;
+    align-items: center;
+    color: var(--color-accent);
+  }
+
+  .current-theme-indicator {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-accent);
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.725rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* Modal Popover */
+  .theme-modal {
+    position: absolute;
+    bottom: calc(100% + 0.75rem);
+    right: 0;
+    width: 320px;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.14);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    animation: fadeInModal 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .theme-modal[hidden] {
+    display: none;
+  }
+
+  @keyframes fadeInModal {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .theme-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .theme-modal-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 0.2rem;
+  }
+
+  .theme-modal-desc {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+  }
+
+  .theme-close-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    padding: 0.25rem;
+    line-height: 1;
+    border-radius: 4px;
+    transition: color 0.15s ease;
+  }
+
+  .theme-close-btn:hover {
+    color: var(--color-text-primary);
+  }
+
+  .theme-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .theme-option-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.65rem 0.75rem;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s ease;
+  }
+
+  .theme-option-btn:hover {
+    border-color: var(--color-border);
+    transform: translateX(2px);
+  }
+
+  .theme-option-btn.active {
+    border-color: var(--color-accent);
+    background-color: var(--color-bg-primary);
+  }
+
+  .theme-swatch-preview {
+    display: flex;
+    gap: 3px;
+  }
+
+  .swatch-circle {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .theme-option-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .theme-option-name {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .theme-option-sub {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+  }
+
+  .theme-check-icon {
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  .theme-option-btn.active .theme-check-icon {
+    opacity: 1;
+  }
+
+  .theme-modal-footer {
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  .theme-modal-footer small {
+    font-size: 0.6875rem;
+    color: var(--color-text-muted);
+    line-height: 1.35;
+    display: block;
+  }
+
+  @media (max-width: 640px) {
+    .theme-switcher-container {
+      bottom: 1rem;
+      right: 1rem;
+    }
+    .theme-modal {
+      width: calc(100vw - 2rem);
+      right: -0.5rem;
+    }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const trigger = document.getElementById('themeTriggerBtn');
+    const modal = document.getElementById('themeModal');
+    const closeBtn = document.getElementById('themeCloseBtn');
+    const currentNameEl = document.getElementById('currentThemeName');
+    const optionBtns = document.querySelectorAll('.theme-option-btn');
+
+    if (!trigger || !modal) return;
+
+    // Obtener tema actual o predeterminado
+    const currentTheme = localStorage.getItem('estrato-theme') || 'caliza';
+    applyTheme(currentTheme);
+
+    function applyTheme(themeId) {
+      document.documentElement.setAttribute('data-theme', themeId);
+      localStorage.setItem('estrato-theme', themeId);
+
+      optionBtns.forEach(btn => {
+        const id = btn.getAttribute('data-theme-id');
+        const isActive = id === themeId;
+        btn.classList.toggle('active', isActive);
+        if (isActive && currentNameEl) {
+          currentNameEl.textContent = btn.getAttribute('data-theme-label') || themeId;
+        }
+      });
+    }
+
+    function openModal() {
+      modal.hidden = false;
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    trigger.addEventListener('click', () => {
+      if (modal.hidden) {
+        openModal();
+      } else {
+        closeModal();
+      }
+    });
+
+    closeBtn?.addEventListener('click', closeModal);
+
+    optionBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const themeId = btn.getAttribute('data-theme-id');
+        if (themeId) {
+          applyTheme(themeId);
+          setTimeout(closeModal, 200);
+        }
+      });
+    });
+
+    // Cerrar al pulsar Escape o hacer click fuera
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.hidden) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!modal.hidden && !modal.contains(e.target) && !trigger.contains(e.target)) {
+        closeModal();
+      }
+    });
+  })();
+</script>

@@ -1,0 +1,37 @@
+{
+  "title": "Estudio Tamarindos",
+  "subtitle": "Reconversión de un antiguo taller tipográfico en espacio de trabajo y residencia temporal para artistas.",
+  "category": "Interiores y Patrimonio",
+  "year": 2024,
+  "location": "Barrio de Jalatlaco, Oaxaca",
+  "area": "310 m² construidos",
+  "serviceSlug": "interiorismo-y-materia",
+  "featured": true,
+  "lead": "Intervención sensible sobre muros preexistentes de adobe y viguería tradicional. El proyecto saca a la luz la pátina histórica de la construcción mediante revoques de cal viva y mobiliario contemporáneo diseñado ex profeso.",
+  "designDecisions": "Preservamos la envolvente muraria centenaria y concentramos las instalaciones técnicas en una 'caja habitable' exenta de madera de tzalam. Este volumen central organiza el área de trabajo, la cocina y los servicios higiénicos sin perforar los muros patrimoniales.",
+  "materials": [
+    "Revoques artesanales de cal apagada y pigmento ocre",
+    "Madera de tzalam macizo con acabado al aceite natural",
+    "Pisos de barro cocido recuperado y sellado a mano",
+    "Luminarias de latón crudo hechas a medida",
+    "Textiles de algodón tejido en telar de cintura"
+  ],
+  "heroImage": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1800&q=80",
+  "gallery": [
+    {
+      "src": "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1400&q=80",
+      "alt": "Estudio principal con mesa de tzalam y muro de adobe recuperado",
+      "caption": "Mesa comunal de trabajo construida con tablones de 4 metros continuos."
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=1400&q=80",
+      "alt": "Rincón de lectura con luz natural rasante sobre revoque de cal",
+      "caption": "Estudio de texturas y contrastes de luz y penumbra."
+    }
+  ],
+  "credits": {
+    "leadArchitect": "Estrato Taller de Arquitectura",
+    "structuralEngineering": "Restauración y Consolidación de Adobe",
+    "photography": "Registro Visual de Demostración"
+  }
+}

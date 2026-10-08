@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EditorialProject from '../../components/EditorialProject.astro';
+import { getCollection } from 'astro:content';
+const projects = (await getCollection('projects')).sort((a,b) => b.data.year-a.data.year);
+const filters = [{label:'Todos',value:'all'}, {label:'Residencial',value:'residencial'}, {label:'Interiores',value:'interiores'}, {label:'Paisaje',value:'paisaje'}];
+---
+<BaseLayout title="Proyectos">
+ <header class="page-opening page-pad"><h1 data-reveal>Un lugar.<br />Una forma de vivir.</h1><div class="opening-bottom"><p>Una selección de arquitectura, interiores y paisaje.<br />Cada obra, una respuesta a su contexto.</p><span>{projects.length.toString().padStart(2,'0')} proyectos</span></div></header>
+ <section class="portfolio-section page-pad" aria-label="Portafolio"><div class="project-filters" aria-label="Filtrar proyectos">{filters.map((filter,i) => <button data-filter={filter.value} aria-pressed={i===0}>{filter.label}</button>)}</div><p class="sr-only" id="filter-status" aria-live="polite"></p><div class="portfolio-grid">{projects.map(project => <EditorialProject project={project} />)}</div></section>
+</BaseLayout>

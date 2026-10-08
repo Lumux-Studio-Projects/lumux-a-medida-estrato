@@ -1,0 +1,213 @@
+---
+// PressSection.astro
+// Sección de Prensa y Distinciones inspirada en TARQ Studio (Awwwards)
+const pressItems = [
+  {
+    media: "Architectural Digest",
+    title: "Las residencias que redefinen la arquitectura bioclimática y la honestidad material en México",
+    year: "2025",
+    category: "Edición Impresa & Digital",
+    quote: "Estrato logra una arquitectura que no compite con el paisaje, sino que parece haber brotado pacientemente de su propia geología.",
+    link: "https://admexico.mx"
+  },
+  {
+    media: "ArchDaily",
+    title: "Casa Pedregal: Inercia térmica pasiva, cantera volcánica y silencio en Jardines del Pedregal",
+    year: "2024",
+    category: "Proyecto Destacado Global",
+    quote: "Un ejercicio magistral de orientación solar y ventilación cruzada donde el hormigón pigmentado y la roca del sitio eliminan la necesidad de climatización mecánica.",
+    link: "https://archdaily.mx"
+  },
+  {
+    media: "Dezeen",
+    title: "Estrato weaves raw monolithic concrete volumes with private jacaranda courtyards",
+    year: "2024",
+    category: "Architecture Feature",
+    quote: "A quiet luxury masterclass in residential design that honors vernacular craftsmanship with contemporary geometric rigor.",
+    link: "https://dezeen.com"
+  },
+  {
+    media: "Premio Obras CEMEX",
+    title: "Primer Lugar Categoría Vivienda Residencial — Premio a la Excelencia Constructiva",
+    year: "2024",
+    category: "Distinción Nacional",
+    quote: "Reconocimiento a la solución estructural, el despiece artesanal de cantería y el desempeño termodinámico comprobado de la obra.",
+    link: "#"
+  }
+];
+---
+
+<section class="press-section" id="prensa">
+  <div class="container">
+    <div class="press-header-row">
+      <div>
+        <span class="tag-meta">Reconocimiento & Difusión</span>
+        <h2 class="press-section-title">
+          <span class="title-main">PRENSA</span>
+          <span class="title-sub font-serif">y distinciones del taller</span>
+        </h2>
+      </div>
+      <div class="press-actions">
+        <a href="https://instagram.com/estrato.arquitectura" target="_blank" rel="noopener" class="btn btn-secondary">
+          <span>Archivo Editorial</span>
+          <span class="btn-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="press-grid">
+      {pressItems.map((item, index) => (
+        <article class="press-item-card">
+          <div class="press-top">
+            <span class="press-media">{item.media}</span>
+            <div class="press-meta-right">
+              <span class="press-year tag-meta">{item.year}</span>
+              <span class="tag-dot">·</span>
+              <span class="press-cat tag-meta">{item.category}</span>
+            </div>
+          </div>
+          <h3 class="press-headline">
+            <a href={item.link} target="_blank" rel="noopener">
+              {item.title}
+            </a>
+          </h3>
+          <p class="press-quote">“{item.quote}”</p>
+          <div class="press-link-footer">
+            <a href={item.link} target="_blank" rel="noopener" class="link-editorial">
+              <span>Leer Reseña Completa</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .press-section {
+    padding: clamp(4.5rem, 8vw, 7.5rem) 0;
+    background-color: var(--color-bg-primary);
+  }
+
+  .press-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1.75rem;
+  }
+
+  .press-section-title {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .title-main {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: clamp(2rem, 3.8vw, 3.25rem);
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+  }
+
+  .title-sub {
+    font-size: clamp(1.85rem, 3.5vw, 2.85rem);
+    font-style: italic;
+    color: var(--color-accent);
+  }
+
+  .press-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 860px) {
+    .press-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+  }
+
+  .press-item-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xs);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.25rem;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .press-item-card:hover {
+    border-color: var(--color-text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.08);
+  }
+
+  .press-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border-light);
+    padding-bottom: 0.85rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .press-media {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+  }
+
+  .press-meta-right {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .tag-dot {
+    color: var(--color-border);
+  }
+
+  .press-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--color-text-primary);
+  }
+
+  .press-headline a {
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .press-headline a:hover {
+    color: var(--color-accent);
+  }
+
+  .press-quote {
+    font-size: 0.925rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    font-style: italic;
+  }
+
+  .press-link-footer {
+    padding-top: 0.5rem;
+  }
+</style>

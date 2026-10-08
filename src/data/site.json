@@ -1,0 +1,42 @@
+{
+  "brand": {
+    "name": "Estrato",
+    "legalName": "Estrato Taller de Arquitectura",
+    "tagline": "Arquitectura e interiorismo donde la materia, el silencio y la luz estructuran el habitar",
+    "description": "Estudio de arquitectura, interiorismo y dirección constructiva con sedes en Ciudad de México, Madrid y Oaxaca. Proyectamos espacios donde la verdad de la materia y el rigor pasivo estructuran la vida cotidiana.",
+    "founded": 2018,
+    "sedes": [
+      { "city": "Ciudad de México", "country": "México", "code": "CDMX" },
+      { "city": "Madrid", "country": "España", "code": "MAD" },
+      { "city": "Oaxaca", "country": "México", "code": "OAX" }
+    ],
+    "city": "Ciudad de México · Madrid · Oaxaca"
+  },
+  "nav": [
+    { "label": "Inicio", "href": "/" },
+    { "label": "El Taller", "href": "/estudio" },
+    { "label": "Proyectos", "href": "/proyectos" },
+    { "label": "Proceso", "href": "/#nuestro-proceso" },
+    { "label": "Servicios", "href": "/servicios" },
+    { "label": "Contacto", "href": "/contacto" }
+  ],
+  "contact": {
+    "email": "contacto@estrato-taller.mx",
+    "phone": "+52 (55) 4162-8901",
+    "address": "Calle de los Artistas 14, San Ángel, CDMX",
+    "hours": "Lunes a Viernes · 9:00 a 18:00 h (Citas de taller y visitas a obra)",
+    "instagram": "https://instagram.com/estrato.arquitectura"
+  },
+  "commercialBanner": {
+    "badge": "Demo Oficial Lumux Studio",
+    "text": "Ejemplo interactivo de Sitio Web a Medida inspirado en TARQ Studio y Mr. C Residences.",
+    "ctaText": "Quiero un sitio a medida similar",
+    "ctaLink": "https://lumuxstudio.com/es"
+  },
+  "seo": {
+    "defaultTitle": "Estrato | Arquitectura e Interiorismo — CDMX · Madrid · Oaxaca",
+    "titleTemplate": "%s | Estrato Taller de Arquitectura",
+    "description": "Estudio de arquitectura e interiorismo de alta precisión en Ciudad de México, Madrid y Oaxaca. Obras residenciales contemporáneas, restauraciones y proyectos bioclimáticos.",
+    "robots": "noindex, nofollow"
+  }
+}

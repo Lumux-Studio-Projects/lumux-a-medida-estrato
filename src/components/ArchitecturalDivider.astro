@@ -1,0 +1,56 @@
+---
+interface Props {
+  align?: 'left' | 'right';
+  class?: string;
+}
+
+const { align = 'left', class: className = '' } = Astro.props;
+---
+
+<div class:list={['arch-separator', `align-${align}`, className]} aria-hidden="true">
+  <div class="container arch-separator-inner">
+    <svg class="arch-diagonal-svg" viewBox="0 0 80 73" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 72.3794L40.9996 0.500117" stroke="currentColor" stroke-width="1.5" />
+    </svg>
+    <div class="arch-horizontal-rule"></div>
+  </div>
+</div>
+
+<style>
+  .arch-separator {
+    width: 100%;
+    background-color: var(--color-bg-primary);
+    overflow: hidden;
+    user-select: none;
+    padding: 0.5rem 0;
+  }
+
+  .arch-separator-inner {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .align-right .arch-separator-inner {
+    flex-direction: row-reverse;
+  }
+
+  .align-right .arch-diagonal-svg {
+    transform: scaleX(-1);
+  }
+
+  .arch-diagonal-svg {
+    width: 48px;
+    height: 44px;
+    flex-shrink: 0;
+    color: var(--color-text-primary);
+    opacity: 0.28;
+  }
+
+  .arch-horizontal-rule {
+    flex: 1;
+    height: 1px;
+    background-color: var(--color-border);
+    opacity: 0.6;
+  }
+</style>

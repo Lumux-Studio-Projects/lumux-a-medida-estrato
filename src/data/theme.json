@@ -1,0 +1,54 @@
+{
+  "name": "Estrato Taller de Arquitectura",
+  "defaultTheme": "caliza",
+  "themes": [
+    {
+      "id": "caliza",
+      "name": "Caliza & Terracota",
+      "subtitle": "Cálido, terroso y mineral diurno",
+      "colors": {
+        "bgPrimary": "#F8F6F0",
+        "bgSecondary": "#EDE7DC",
+        "bgCard": "#FFFFFF",
+        "textPrimary": "#1A1815",
+        "textSecondary": "#5E5950",
+        "accent": "#9C4B35",
+        "accentHover": "#833E2B",
+        "border": "#DCD7CC",
+        "surfaceMuted": "#E5DFD4"
+      }
+    },
+    {
+      "id": "pizarra",
+      "name": "Pizarra & Azur Técnico",
+      "subtitle": "Gris nórdico y azul cobalto plano",
+      "colors": {
+        "bgPrimary": "#EDF1F5",
+        "bgSecondary": "#DEE5EC",
+        "bgCard": "#FFFFFF",
+        "textPrimary": "#101721",
+        "textSecondary": "#4B5868",
+        "accent": "#1D3F66",
+        "accentHover": "#132D4B",
+        "border": "#C7D2DD",
+        "surfaceMuted": "#D4DFE8"
+      }
+    },
+    {
+      "id": "nocturno",
+      "name": "Obsidiana & Calcopirita",
+      "subtitle": "Nocturno arquitectónico y maqueta iluminada",
+      "colors": {
+        "bgPrimary": "#111215",
+        "bgSecondary": "#191B21",
+        "bgCard": "#20242D",
+        "textPrimary": "#F5F3EC",
+        "textSecondary": "#A4A5A0",
+        "accent": "#E0A96D",
+        "accentHover": "#F2BF88",
+        "border": "#2D323E",
+        "surfaceMuted": "#181A20"
+      }
+    }
+  ]
+}

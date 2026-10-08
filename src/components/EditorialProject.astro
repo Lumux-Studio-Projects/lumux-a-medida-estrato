@@ -1,0 +1,11 @@
+---
+import ArrowIcon from './ArrowIcon.astro';
+import type { CollectionEntry } from 'astro:content';
+interface Props { project: CollectionEntry<'projects'>; featured?: boolean }
+const { project, featured = false } = Astro.props;
+---
+<a class:list={['editorial-project', { 'project-wide': featured }]} href={`/proyectos/${project.id}`} data-category={project.data.category}>
+  <div class="project-photo"><img src={project.data.heroImage} alt={`Vista de ${project.data.title}`} width="1600" height="1100" loading="lazy" /><span class="project-view">Ver proyecto <ArrowIcon /></span></div>
+  <div class="project-caption"><h3>{project.data.title}</h3><span>{project.data.year}<span aria-hidden="true"> <ArrowIcon /></span></span></div>
+  <p>{project.data.category} · {project.data.location}</p>
+</a>

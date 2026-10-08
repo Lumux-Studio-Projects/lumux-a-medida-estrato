@@ -1,0 +1,249 @@
+---
+// MaterialBoard.astro
+// Laboratorio de Materias Nobles & Texturas Táctiles
+// Inspirado en la inspección de materiales de Wiemer.store y el tacto cerámico de Acme Cups
+---
+
+<div class="material-board-container" id="materialBoard">
+  <div class="material-grid-interactive">
+    <!-- Material 1: Cantera Basáltica -->
+    <div class="material-card active" data-mat="0">
+      <div class="material-img-wrap">
+        <img 
+          src="https://images.unsplash.com/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&w=1200&q=80" 
+          alt="Cantera Basáltica Volcánica"
+          class="material-img"
+          loading="lazy"
+        />
+        <span class="material-tag-pill">01 // PIEDRA LOCAL</span>
+      </div>
+      <div class="material-meta-body">
+        <div class="material-header-row">
+          <h3 class="material-name">Cantera Basáltica Volcánica</h3>
+          <span class="density-badge">2,750 kg/m³</span>
+        </div>
+        <p class="material-desc">
+          Extraída en un radio menor a 80 km de obra. Su porosidad mineral aporta una inercia térmica excepcional, absorbiendo la radiación diurna para liberarla suavemente durante las noches frescas.
+        </p>
+        <div class="material-spec-chips">
+          <span class="spec-chip">✦ Acabado abujardado a mano</span>
+          <span class="spec-chip">✦ Alta resistencia a la intemperie</span>
+          <span class="spec-chip">✦ Cero huella de importación</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Material 2: Roble Blanco Macizo -->
+    <div class="material-card" data-mat="1">
+      <div class="material-img-wrap">
+        <img 
+          src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80" 
+          alt="Roble Blanco Macizo FSC"
+          class="material-img"
+          loading="lazy"
+        />
+        <span class="material-tag-pill">02 // MADERA FSC</span>
+      </div>
+      <div class="material-meta-body">
+        <div class="material-header-row">
+          <h3 class="material-name">Roble Blanco Macizo</h3>
+          <span class="density-badge">740 kg/m³</span>
+        </div>
+        <p class="material-desc">
+          Madera de corte radial con secado lento. Tratada exclusivamente con mezclas botánicas de aceite de linaza y cera virgen de abeja, permitiendo que la veta respire sin películas plásticas sintéticas.
+        </p>
+        <div class="material-spec-chips">
+          <span class="spec-chip">✦ Aceitado vegetal mate</span>
+          <span class="spec-chip">✦ Ensambles de cola de milano</span>
+          <span class="spec-chip">✦ Certificación forestal FSC</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Material 3: Muros de Tapial Compactado -->
+    <div class="material-card" data-mat="2">
+      <div class="material-img-wrap">
+        <img 
+          src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80" 
+          alt="Muros de Tapial y Tierra Viva"
+          class="material-img"
+          loading="lazy"
+        />
+        <span class="material-tag-pill">03 // TIERRA VIVA</span>
+      </div>
+      <div class="material-meta-body">
+        <div class="material-header-row">
+          <h3 class="material-name">Tapial de Tierra Compactada</h3>
+          <span class="density-badge">40 cm espesor</span>
+        </div>
+        <p class="material-desc">
+          La tierra del propio desmonte tamizada con cal viva y arenas finas. Muros monolíticos de 40 a 50 cm que regulan la humedad interior al 50% de forma natural y brindan aislamiento sonoro de 48 dB.
+        </p>
+        <div class="material-spec-chips">
+          <span class="spec-chip">✦ Huella de carbono negativa</span>
+          <span class="spec-chip">✦ Clima interior autorregulado</span>
+          <span class="spec-chip">✦ Estratigrafía visual única</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Material 4: Latón y Cobre en Bruto -->
+    <div class="material-card" data-mat="3">
+      <div class="material-img-wrap">
+        <img 
+          src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80" 
+          alt="Latón y Bronce en Bruto"
+          class="material-img"
+          loading="lazy"
+        />
+        <span class="material-tag-pill">04 // ORFEBRERÍA</span>
+      </div>
+      <div class="material-meta-body">
+        <div class="material-header-row">
+          <h3 class="material-name">Latón & Bronce Macizo</h3>
+          <span class="density-badge">Sin barniz</span>
+        </div>
+        <p class="material-desc">
+          Metales nobles mecanizados en talleres de orfebrería local. No aplicamos lacas sintéticas para permitir que el contacto cotidiano cree una pátina ámbar que documenta la vida del hogar.
+        </p>
+        <div class="material-spec-chips">
+          <span class="spec-chip">✦ Pátina viva con el tiempo</span>
+          <span class="spec-chip">✦ Herrajes y tiradores 1:1</span>
+          <span class="spec-chip">✦ Propiedades antibacterianas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .material-board-container {
+    width: 100%;
+  }
+
+  .material-grid-interactive {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .material-grid-interactive {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .material-grid-interactive {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .material-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.4s ease;
+  }
+
+  .material-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-accent);
+    box-shadow: 0 18px 45px rgba(26, 24, 21, 0.08);
+  }
+
+  .material-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: var(--color-bg-secondary);
+  }
+
+  .material-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .material-card:hover .material-img {
+    transform: scale(1.06);
+  }
+
+  .material-tag-pill {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.25rem 0.65rem;
+    background-color: rgba(26, 24, 21, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.06em;
+  }
+
+  .material-meta-body {
+    padding: 1.5rem 1.6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    flex: 1;
+  }
+
+  .material-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .material-name {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+  }
+
+  .density-badge {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--color-accent);
+    background-color: var(--color-bg-secondary);
+    padding: 0.2rem 0.5rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+    font-weight: 700;
+  }
+
+  .material-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .material-spec-chips {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  .spec-chip {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+</style>

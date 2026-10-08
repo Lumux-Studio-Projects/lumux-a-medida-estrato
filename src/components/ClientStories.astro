@@ -1,0 +1,184 @@
+---
+// ClientStories.astro
+// Testimonios cercanos & Historias de Vida
+// Inspirado en la calidez de Acme Cups
+---
+
+<div class="client-stories-grid">
+  <!-- Historia 1 -->
+  <div class="story-card">
+    <div class="story-header">
+      <div class="stars-row">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <span class="story-verified">● RESIDENTE VERIFICADO</span>
+    </div>
+
+    <blockquote class="story-quote">
+      “Construir una casa suele ser una pesadilla de retrasos y sorpresas. Con Mateo y Sofía fue una experiencia de calma y rigor. Casa Pedregal mantiene 21°C constantes todo el año sin prender aire acondicionado y el patio central es el corazón de nuestra familia.”
+    </blockquote>
+
+    <div class="story-author-row">
+      <img 
+        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" 
+        alt="Mariana Domínguez" 
+        class="author-photo"
+        loading="lazy"
+      />
+      <div class="author-info">
+        <span class="author-name">Carlos & Mariana Domínguez</span>
+        <span class="author-role">Casa Pedregal · 540 m² · CDMX</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Historia 2 -->
+  <div class="story-card">
+    <div class="story-header">
+      <div class="stars-row">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <span class="story-verified">● RESIDENTE VERIFICADO</span>
+    </div>
+
+    <blockquote class="story-quote">
+      “El respeto por el terreno y los árboles existentes fue absoluto. No talaron ni un solo encino maduro y la estructura de madera sobre el espejo de agua hace que parezca que el pabellón siempre estuvo ahí. Su atención al detalle raya en la orfebrería.”
+    </blockquote>
+
+    <div class="story-author-row">
+      <img 
+        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" 
+        alt="Javier Peña" 
+        class="author-photo"
+        loading="lazy"
+      />
+      <div class="author-info">
+        <span class="author-name">Arq. Javier Peña & Dra. Lucía</span>
+        <span class="author-role">Pabellón Humedal · Valle de Bravo</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Historia 3 -->
+  <div class="story-card">
+    <div class="story-header">
+      <div class="stars-row">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <span class="story-verified">● RESIDENTE VERIFICADO</span>
+    </div>
+
+    <blockquote class="story-quote">
+      “Rescataron una casona de adobe en Jalatlaco y la convirtieron en un santuario de luz y cal apagada. Lo que más agradezco: el presupuesto se respetó al centavo desde el día uno y cada semana recibíamos reportes fotográficos impecables.”
+    </blockquote>
+
+    <div class="story-author-row">
+      <img 
+        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" 
+        alt="Elena Villaseñor" 
+        class="author-photo"
+        loading="lazy"
+      />
+      <div class="author-info">
+        <span class="author-name">Elena Villaseñor</span>
+        <span class="author-role">Estudio Tamarindos · Oaxaca</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .client-stories-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 860px) {
+    .client-stories-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.25rem;
+    }
+  }
+
+  .story-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    padding: 2.25rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.25s ease;
+  }
+
+  .story-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-accent);
+    box-shadow: 0 16px 40px rgba(26, 24, 21, 0.08);
+  }
+
+  .story-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .stars-row {
+    color: var(--color-accent);
+    font-size: 1.05rem;
+    letter-spacing: 0.15em;
+  }
+
+  .story-verified {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: 0.05em;
+  }
+
+  .story-quote {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text-primary);
+    font-style: italic;
+    flex: 1;
+  }
+
+  .story-author-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  .author-photo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-accent);
+  }
+
+  .author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .author-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--color-text-primary);
+  }
+
+  .author-role {
+    font-family: var(--font-mono);
+    font-size: 0.725rem;
+    color: var(--color-text-muted);
+  }
+</style>

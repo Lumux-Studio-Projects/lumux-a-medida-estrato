@@ -1,0 +1,46 @@
+{
+  "title": "Arquitectura Residencial",
+  "shortDescription": "Viviendas unifamiliares e intervenciones patrimoniales proyectadas a partir de la luz natural, la orientación y la honestidad constructiva.",
+  "lead": "Proyectamos viviendas como refugios serenos y atemporales. Cada encargo parte de un estudio riguroso del sitio, la topografía y las dinámicas particulares de quienes lo habitarán.",
+  "category": "Arquitectura y Construcción",
+  "deliverables": [
+    "Levantamiento topográfico y estudio de orientación solar",
+    "Anteproyecto y maqueta conceptual de intenciones",
+    "Proyecto ejecutivo completo (planos arquitectónicos, estructurales y de instalaciones)",
+    "Memoria descriptiva, catálogo de conceptos y especificaciones de materiales",
+    "Dirección arquitectónica y supervisión de obra periódica"
+  ],
+  "phases": [
+    {
+      "step": "01",
+      "title": "Escucha y Territorio",
+      "description": "Entendimiento de las necesidades familiares o del encargo, visitas al predio y análisis bioclimático para determinar orientación y vientos dominantes."
+    },
+    {
+      "step": "02",
+      "title": "Estrategia Espacial",
+      "description": "Exploración de volumetrías, patios interiores, transiciones entre lo público y lo privado, y definición de la estructura portante."
+    },
+    {
+      "step": "03",
+      "title": "Definición Constructiva",
+      "description": "Elaboración de la totalidad de planos ejecutivos, detalles de carpintería fija, herrería artesanal e instalaciones integradas."
+    },
+    {
+      "step": "04",
+      "title": "Materialización y Supervisión",
+      "description": "Acompañamiento en obra, resolución de encuentros en sitio y control de calidad en colados de concreto, aparejos y acabados."
+    }
+  ],
+  "requiredMaterials": [
+    "Escrituras o plano topográfico del predio",
+    "Reglamento de construcción o lineamientos del condominio",
+    "Programa de necesidades y presupuesto estimado"
+  ],
+  "coverImage": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+  "featuredProjectsSlugs": [
+    "casa-pedregal",
+    "pabellon-humedal"
+  ],
+  "ctaLabel": "Consultar proyecto residencial"
+}

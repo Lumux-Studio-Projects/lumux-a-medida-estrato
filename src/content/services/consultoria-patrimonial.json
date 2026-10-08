@@ -1,0 +1,46 @@
+{
+  "title": "Consultoría y Restauración Patrimonial",
+  "shortDescription": "Intervenciones respetuosas en casonas y fincas históricas protegidas por INAH/INBAL con diálogo constructivo contemporáneo.",
+  "lead": "Recuperamos el valor tectónico de edificaciones históricas sin convertirlas en museos inertes. Adaptamos la infraestructura a los estándares contemporáneos de confort térmico y habitabilidad.",
+  "category": "Patrimonio & Restauración",
+  "deliverables": [
+    "Dictamen de estabilidad estructural y patologías constructivas",
+    "Proyecto de consolidación y restitución de mamposterías",
+    "Gestión integral de licencias ante INAH e INBAL",
+    "Diseño de carpinterías de época y herrerías de forja",
+    "Dirección especializada en obra con maestros canteros y yeseros"
+  ],
+  "phases": [
+    {
+      "step": "01",
+      "title": "Diagnosis y Calas Históricas",
+      "description": "Levantamiento milimétrico con escáner láser, análisis de morteros originales y catalogación de viguerías."
+    },
+    {
+      "step": "02",
+      "title": "Consolidación Estructural",
+      "description": "Inyecciones de cal hidráulica, remozado de arquerías y refuerzo sismorresistente imperceptible."
+    },
+    {
+      "step": "03",
+      "title": "Capa Contemporánea",
+      "description": "Integración de instalaciones ocultas, carpinterías a medida e iluminación cálida indirecta."
+    },
+    {
+      "step": "04",
+      "title": "Entrega y Puesta en Valor",
+      "description": "Cierre de expediente ante autoridades de patrimonio y manual de conservación preventiva."
+    }
+  ],
+  "requiredMaterials": [
+    "Plano histórico o cédula catastral",
+    "Estado de conservación fotográfico preliminar",
+    "Uso de suelo previsto (vivienda, galería o boutique hotel)"
+  ],
+  "coverImage": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
+  "featuredProjectsSlugs": [
+    "residencia-san-angel",
+    "estudio-tamarindos"
+  ],
+  "ctaLabel": "Consultar intervención patrimonial"
+}

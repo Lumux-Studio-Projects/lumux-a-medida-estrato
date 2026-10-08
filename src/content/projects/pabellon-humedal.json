@@ -1,0 +1,37 @@
+{
+  "title": "Pabellón Humedal",
+  "subtitle": "Estructura ligera de madera laminada suspendida sobre pilotes para contemplación botánica y estancia de trabajo.",
+  "category": "Intervención de Paisaje",
+  "year": 2023,
+  "location": "Valle de Bravo, Estado de México",
+  "area": "185 m² construidos",
+  "serviceSlug": "arquitectura-residencial",
+  "featured": true,
+  "lead": "Un pabellón diseñado para tocar el suelo con la mínima huella ecológica posible. Emplazado al borde de un cuerpo de agua protegido, la obra flota sobre zapatas aisladas respetando la capa freática y la flora ribereña.",
+  "designDecisions": "Se utilizó un sistema modular de pórticos de madera laminada de origen forestal certificado, ensamblados en seco con uniones ocultas de acero inoxidable. Grandes paños correderos de cristal permiten abrir completamente el perímetro, convirtiendo la estancia interior en un mirador techado abierto a la brisa lacustre.",
+  "materials": [
+    "Madera laminada de pino tratada térmicamente",
+    "Cubierta vegetal extensiva con especies nativas",
+    "Pilotes de cimentación puntual de acero galvanizado",
+    "Piso de tablón de fresno recuperado",
+    "Vidrio bajo emisivo con control solar"
+  ],
+  "heroImage": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1800&q=80",
+  "gallery": [
+    {
+      "src": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=80",
+      "alt": "Vista lateral del pabellón flotando sobre el espejo de agua",
+      "caption": "Elevación de 80 cm sobre la cota máxima de inundación estacional."
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=1400&q=80",
+      "alt": "Detalle de los pórticos de madera y celosía de sombra",
+      "caption": "Filtración de la luz directa de poniente mediante celosías móviles."
+    }
+  ],
+  "credits": {
+    "leadArchitect": "Estrato Taller de Arquitectura",
+    "structuralEngineering": "Timbres y Estructuras Sostenibles",
+    "photography": "Registro Visual de Demostración"
+  }
+}

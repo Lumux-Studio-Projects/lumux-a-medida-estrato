@@ -1,0 +1,299 @@
+---
+// ProcessSection.astro
+// Metodología Proyectual en 4 Etapas — Inspirado en el proceso arquitectónico de TARQ Studio (Awwwards)
+const steps = [
+  {
+    number: "01",
+    titleLine1: "DISEÑO",
+    titleLine2: "ARQUITECTÓNICO",
+    description: "Diseñamos edificaciones desde la planificación estratégica y levantamiento topográfico hasta la resolución estructural, considerando microclima, asoleamiento y eficiencia espacial pasiva.",
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=80",
+    imageAlt: "Proceso 01: Maquetas de estudio, bocetos y planos topográficos",
+    meta: "Fase 01 · Estrategia & Geometría"
+  },
+  {
+    number: "02",
+    titleLine1: "INTERIORISMO",
+    titleLine2: "ARQUITECTÓNICO",
+    description: "Proyectamos las distribuciones habitables y seleccionamos la materia endémica: canterías, maderas tratadas con aceites vegetales, cancelerías esbeltas e iluminación rasante que potencian la experiencia del espacio.",
+    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=80",
+    imageAlt: "Proceso 02: Espacio interior con luz rasante, madera de roble y concreto",
+    meta: "Fase 02 · Espacio & Textura"
+  },
+  {
+    number: "03",
+    titleLine1: "RENDERIZADO",
+    titleLine2: "ARQUITECTÓNICO",
+    description: "Traducimos el proyecto en modelos digitales y estudios lumínicos de alto impacto visual, comunicando con precisión la intención espacial, los tonos de la sombra y la atmósfera antes de colar.",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80",
+    imageAlt: "Proceso 03: Visualización arquitectónica fotorrealista de luz y materia",
+    meta: "Fase 03 · Simulación Termo-Visual"
+  },
+  {
+    number: "04",
+    titleLine1: "DEFINICIÓN TÉCNICA",
+    titleLine2: "& DIRECCIÓN 1:1",
+    description: "Aterrizamos el diseño en documentación ejecutiva exhaustiva: catálogo de conceptos a precio unitario cerrado, despiece a escala 1:1 y supervisión presencial continua con maestros artesanos.",
+    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80",
+    imageAlt: "Proceso 04: Detalle constructivo 1:1, cantería y carpintería en obra",
+    meta: "Fase 04 · Control en Terreno"
+  }
+];
+---
+
+<section class="tarq-process-section" id="nuestro-proceso">
+  <div class="container">
+    <div class="process-header">
+      <div class="process-title-group">
+        <span class="tag-meta">Metodología Proyectual</span>
+        <h2 class="process-headline">
+          <span class="headline-block">NUESTRO</span>
+          <span class="headline-block headline-serif font-serif">PROCESO</span>
+        </h2>
+      </div>
+      <p class="process-statement">
+        Un método de cuatro etapas rigurosas donde cada decisión responde a la verdad del sitio, la eficiencia termodinámica y el bienestar humano duradero.
+      </p>
+    </div>
+
+    <div class="process-steps-list">
+      {steps.map((step) => (
+        <article class="tarq-step-item">
+          <!-- Cabecera de Etapa -->
+          <header class="step-header">
+            <span class="step-index">{step.number}</span>
+            <h3 class="step-title">
+              <span class="title-l1">{step.titleLine1}</span>
+              <span class="title-l2">{step.titleLine2}</span>
+            </h3>
+          </header>
+
+          <!-- Líneas de Dibujo Técnico Arquitectónico (TARQ Drafting Line) -->
+          <div class="step-drafting-line" aria-hidden="true">
+            <span class="line-horizontal"></span>
+            <span class="line-vertical"></span>
+            <span class="line-crosshair"></span>
+          </div>
+
+          <!-- Cuerpo con Fotografía Arquitectónica y Explicación -->
+          <div class="step-body">
+            <div class="step-img-frame">
+              <img 
+                src={step.image} 
+                alt={step.imageAlt} 
+                loading="lazy" 
+                class="step-image" 
+              />
+              <span class="step-meta-badge">{step.meta}</span>
+            </div>
+            <p class="step-description">{step.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .tarq-process-section {
+    padding: clamp(5rem, 8vw, 8rem) 0;
+    background-color: var(--color-bg-primary);
+    position: relative;
+  }
+
+  .process-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: clamp(3.5rem, 6vw, 5.5rem);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 2rem;
+  }
+
+  @media (min-width: 860px) {
+    .process-header {
+      grid-template-columns: 1.2fr 1fr;
+      align-items: flex-end;
+      gap: 4rem;
+    }
+  }
+
+  .process-headline {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    line-height: 1;
+  }
+
+  .headline-block {
+    font-family: var(--font-sans);
+    font-size: clamp(2.25rem, 4.2vw, 3.75rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+  }
+
+  .headline-serif {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--color-accent);
+  }
+
+  .process-statement {
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+  }
+
+  /* Grid de Pasos TARQ */
+  .process-steps-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .process-steps-list {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem 2rem;
+    }
+  }
+
+  @media (min-width: 1080px) {
+    .process-steps-list {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .tarq-step-item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .step-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .step-index {
+    font-family: var(--font-mono);
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .step-title {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.25;
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+  }
+
+  .title-l1 {
+    display: block;
+  }
+
+  .title-l2 {
+    display: block;
+    color: var(--color-text-secondary);
+  }
+
+  /* Línea ortogonal de dibujo arquitectónico */
+  .step-drafting-line {
+    position: relative;
+    width: 100%;
+    height: 18px;
+    margin-bottom: 1.25rem;
+  }
+
+  .line-horizontal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: var(--color-border);
+  }
+
+  .line-vertical {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 18px;
+    background-color: var(--color-border);
+  }
+
+  .line-crosshair {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 7px;
+    height: 7px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+  }
+
+  /* Contenedor de Imagen y Descripción */
+  .step-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+  }
+
+  .step-img-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: var(--radius-xs);
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+  }
+
+  .step-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+    filter: grayscale(15%);
+  }
+
+  .tarq-step-item:hover .step-image {
+    transform: scale(1.04);
+    filter: grayscale(0%);
+  }
+
+  .step-meta-badge {
+    position: absolute;
+    bottom: 0.65rem;
+    left: 0.65rem;
+    padding: 0.25rem 0.6rem;
+    background-color: rgba(23, 23, 23, 0.8);
+    backdrop-filter: blur(4px);
+    color: #FFFFFF;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    border-radius: var(--radius-xs);
+    text-transform: uppercase;
+  }
+
+  .step-description {
+    font-size: 0.885rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+</style>

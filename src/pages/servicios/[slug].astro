@@ -1,0 +1,12 @@
+---
+import AccordionIcon from '../../components/AccordionIcon.astro';
+import ArrowIcon from '../../components/ArrowIcon.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EditorialProject from '../../components/EditorialProject.astro';
+import { getCollection } from 'astro:content';
+export async function getStaticPaths() { return (await getCollection('services')).map(service => ({params:{slug:service.id},props:{service}})); }
+const { service } = Astro.props;
+const d = service.data;
+const projects = (await getCollection('projects')).filter(p => d.featuredProjectsSlugs.includes(p.id));
+---
+<BaseLayout title={d.title} description={d.shortDescription}><header class="service-opening page-pad"><a class="back-link" href="/servicios"><ArrowIcon direction="left" /> Todos los servicios</a><h1 data-reveal>{d.title}</h1><div class="service-opening-bottom"><p>{d.lead}</p><a class="text-link" href={`/contacto?servicio=${service.id}`}>Iniciar conversación <ArrowIcon /></a></div></header><figure class="service-bleed" data-parallax><img src={d.coverImage} alt={d.title} width="1600" height="1000" /></figure><section class="service-scope page-pad"><h2>La idea se convierte<br />en proyecto.</h2><div><p class="large-copy">{d.shortDescription}</p><h3>Qué desarrollamos</h3><ul class="deliverables-list">{d.deliverables.map((item:string) => <li>{item}</li>)}</ul></div></section><section class="service-phases page-pad" id="etapas"><h2>Un proceso<br />con intención.</h2><div>{d.phases.map((phase:{step:string;title:string;description:string},i:number) => <details name="service-phases" class="process-step" open={i===0}><summary><span class="step-number">{phase.step}</span><h3>{phase.title}</h3><AccordionIcon /></summary><p>{phase.description}</p></details>)}</div></section><section class="service-prerequisites page-pad"><h2>Para comenzar.</h2><ul>{d.requiredMaterials.map((m:string) => <li>{m}</li>)}</ul><a class="text-link" href={`/contacto?servicio=${service.id}`}>Consultar proyecto <ArrowIcon /></a></section>{projects.length>0 && <section class="related-section page-pad"><div class="section-top"><h2>La mirada,<br />en la práctica.</h2><a class="text-link" href="/proyectos">Ver proyectos <ArrowIcon /></a></div><div class="portfolio-grid">{projects.map(p => <EditorialProject project={p} />)}</div></section>}</BaseLayout>

@@ -1,0 +1,6 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import site from '../data/site.json';
+---
+<BaseLayout title="Contacto"><header class="page-opening page-pad"><h1 data-reveal>Cuéntanos<br />qué imaginas.</h1><div class="opening-bottom"><p>Una casa, un interior, una nueva posibilidad.<br />Nos gustaría conocer tu proyecto.</p></div></header><section class="contact-layout page-pad"><aside class="contact-details"><h2>Hablemos.</h2><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a><a href={`tel:${site.contact.phone.replace(/[^+0-9]/g,'')}`}>{site.contact.phone}</a><address>{site.contact.address}</address><p>Lunes a viernes<br />9:00 a 18:00 h</p><div class="contact-photo"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="Detalle de mobiliario y materiales de un interior" width="800" height="1000" loading="lazy" /></div></aside><ContactForm /></section></BaseLayout>

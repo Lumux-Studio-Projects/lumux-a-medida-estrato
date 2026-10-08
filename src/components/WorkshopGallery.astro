@@ -1,0 +1,193 @@
+---
+// WorkshopGallery.astro
+// Vida de Estudio & El Oficio en el Taller
+// Inspirado en la cercanía humana y visual de Acme Cups y Wiemer.store
+---
+
+<div class="workshop-mosaic">
+  <!-- Escena 1 -->
+  <div class="mosaic-item item-large">
+    <div class="mosaic-img-wrap">
+      <img 
+        src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" 
+        alt="Mesas de dibujo y maquetas de madera en taller Roma Norte"
+        class="mosaic-img"
+        loading="lazy"
+      />
+      <div class="mosaic-badge-pill">
+        <span class="badge-dot"></span>
+        <span>TALLER SAN ÁNGEL · CDMX</span>
+      </div>
+      <div class="mosaic-caption">
+        <h4 class="caption-title">Mesas de Dibujo & Prototipado 1:20</h4>
+        <p class="caption-text">Antes de tocar el software, cada idea nace en modelos físicos de madera y barro sobre la mesa comunal.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Escena 2 -->
+  <div class="mosaic-item">
+    <div class="mosaic-img-wrap">
+      <img 
+        src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" 
+        alt="Laboratorio de materias y probetas de concreto con pigmentos minerales"
+        class="mosaic-img"
+        loading="lazy"
+      />
+      <div class="mosaic-badge-pill">
+        <span class="badge-dot"></span>
+        <span>LABORATORIO MINERAL</span>
+      </div>
+      <div class="mosaic-caption">
+        <h4 class="caption-title">Cálculo de Inercia y Probetas</h4>
+        <p class="caption-text">Ensayos de compresión y pruebas de color con arenas locales.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Escena 3 -->
+  <div class="mosaic-item">
+    <div class="mosaic-img-wrap">
+      <img 
+        src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" 
+        alt="Supervisión en obra con maestros albañiles y canteros"
+        class="mosaic-img"
+        loading="lazy"
+      />
+      <div class="mosaic-badge-pill">
+        <span class="badge-dot"></span>
+        <span>OBRA EN VIVO · DÍA A DÍA</span>
+      </div>
+      <div class="mosaic-caption">
+        <h4 class="caption-title">Diálogo Directo en el Andamio</h4>
+        <p class="caption-text">Los directores visitan la obra tres veces por semana sin intermediarios.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Escena 4 -->
+  <div class="mosaic-item item-wide">
+    <div class="mosaic-img-wrap">
+      <img 
+        src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=1200&q=80" 
+        alt="Carpintería artesanal de roble y ensamble de piezas"
+        class="mosaic-img"
+        loading="lazy"
+      />
+      <div class="mosaic-badge-pill">
+        <span class="badge-dot"></span>
+        <span>OFICIO DE CARPINTERÍA</span>
+      </div>
+      <div class="mosaic-caption">
+        <h4 class="caption-title">Mobiliario Integrado a la Arquitectura</h4>
+        <p class="caption-text">Diseñamos puertas, canceles y cocinas que nacen de la misma geometría del muro.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .workshop-mosaic {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .workshop-mosaic {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .workshop-mosaic {
+      grid-template-columns: 1.4fr 1fr;
+      gap: 2.25rem;
+    }
+  }
+
+  .mosaic-item {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg-card);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+  }
+
+  .mosaic-item:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-accent);
+    box-shadow: 0 16px 40px rgba(26, 24, 21, 0.08);
+  }
+
+  .mosaic-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background-color: var(--color-bg-secondary);
+  }
+
+  .item-large .mosaic-img-wrap {
+    aspect-ratio: 16 / 11;
+  }
+
+  .mosaic-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mosaic-item:hover .mosaic-img {
+    transform: scale(1.05);
+  }
+
+  .mosaic-badge-pill {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.75rem;
+    background-color: rgba(26, 24, 21, 0.82);
+    backdrop-filter: blur(8px);
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.06em;
+    z-index: 2;
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+  }
+
+  .mosaic-caption {
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .caption-title {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .caption-text {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+  }
+</style>

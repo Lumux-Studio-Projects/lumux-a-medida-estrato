@@ -1,0 +1,125 @@
+/* Tokens cromáticos y temas para Estrato Taller de Arquitectura
+   Inspirado en la materialidad de TARQ Studio (Bogotá · Madrid · Miami) y el rigor residencial de Mr. C Residences */
+
+:root,
+[data-theme="caliza"] {
+  --color-bg-primary: #DFDDDC;
+  --color-bg-secondary: #E8E6E3;
+  --color-bg-card: #FFFFFF;
+  --color-text-primary: #171717;
+  --color-text-secondary: #4A4844;
+  --color-text-muted: #7E7C77;
+  --color-accent: #964228;
+  --color-accent-hover: #7E3620;
+  --color-accent-light: #ECE5DE;
+  --color-border: #C8C5BF;
+  --color-border-light: #D8D5CF;
+  --color-border-subtle: rgba(23, 23, 23, 0.12);
+  --color-surface-muted: #D5D2CD;
+  --color-dark-surface: #171717;
+  --color-dark-text: #F5F3EC;
+  --theme-name: "Caliza & Travertino";
+}
+
+[data-theme="pizarra"] {
+  --color-bg-primary: #ECECEE;
+  --color-bg-secondary: #DFDFE3;
+  --color-bg-card: #FFFFFF;
+  --color-text-primary: #14171A;
+  --color-text-secondary: #484E55;
+  --color-text-muted: #7A818B;
+  --color-accent: #1D3557;
+  --color-accent-hover: #14253D;
+  --color-accent-light: #DEE4EC;
+  --color-border: #C4C8D0;
+  --color-border-light: #D5D8E0;
+  --color-border-subtle: rgba(20, 23, 26, 0.12);
+  --color-surface-muted: #D0D4DC;
+  --color-dark-surface: #14171A;
+  --color-dark-text: #F3F5F7;
+  --theme-name: "Pizarra & Zinc";
+}
+
+[data-theme="nocturno"] {
+  --color-bg-primary: #171717;
+  --color-bg-secondary: #1F1F1F;
+  --color-bg-card: #262626;
+  --color-text-primary: #F5F3ED;
+  --color-text-secondary: #B0AEA8;
+  --color-text-muted: #7B7973;
+  --color-accent: #D99B65;
+  --color-accent-hover: #ECC08F;
+  --color-accent-light: #2E251A;
+  --color-border: #333333;
+  --color-border-light: #444444;
+  --color-border-subtle: rgba(255, 255, 255, 0.12);
+  --color-surface-muted: #1A1A1A;
+  --color-dark-surface: #0E0E0E;
+  --color-dark-text: #FFFFFF;
+  --theme-name: "Obsidiana & Bronce";
+}
+
+/* Compatibilidad con presets previos */
+[data-theme="hormigon"] {
+  --color-bg-primary: #EDF1F5;
+  --color-bg-secondary: #DEE5EC;
+  --color-bg-card: #FFFFFF;
+  --color-text-primary: #101721;
+  --color-text-secondary: #4B5868;
+  --color-text-muted: #7A899B;
+  --color-accent: #1D3F66;
+  --color-accent-hover: #132D4B;
+  --color-accent-light: #DEE8F2;
+  --color-border: #C7D2DD;
+  --color-border-light: #D9E3EC;
+  --color-surface-muted: #D4DFE8;
+  --theme-name: "Pizarra & Azur Técnico";
+}
+
+[data-theme="bosque"] {
+  --color-bg-primary: #F4F3EE;
+  --color-bg-secondary: #E7E6DF;
+  --color-bg-card: #FFFFFF;
+  --color-text-primary: #1F201D;
+  --color-text-secondary: #5E6359;
+  --color-text-muted: #83887E;
+  --color-accent: #475239;
+  --color-accent-hover: #353D2A;
+  --color-accent-light: #E4E8DF;
+  --color-border: #D1CFC5;
+  --color-border-light: #E2E1DA;
+  --color-surface-muted: #DAD7CD;
+  --theme-name: "Bosque & Roble";
+}
+
+:root {
+  /* Tipografía de alta precisión arquitectónica */
+  --font-serif: 'Instrument Serif', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Escala de espaciado fluido */
+  --space-2xs: clamp(0.25rem, 0.5vw, 0.375rem);
+  --space-xs: clamp(0.5rem, 0.75vw, 0.75rem);
+  --space-sm: clamp(0.75rem, 1vw, 1rem);
+  --space-md: clamp(1rem, 1.5vw, 1.5rem);
+  --space-lg: clamp(1.5rem, 2.5vw, 2.5rem);
+  --space-xl: clamp(2.5rem, 4vw, 4rem);
+  --space-2xl: clamp(4rem, 6vw, 6.5rem);
+  --space-3xl: clamp(5.5rem, 9vw, 9.5rem);
+
+  /* Transiciones y radios */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-full: 9999px;
+
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-theme: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+
+  /* Máximos anchos de contenedor */
+  --container-max: 1360px;
+  --container-narrow: 940px;
+}

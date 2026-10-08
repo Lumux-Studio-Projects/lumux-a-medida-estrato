@@ -1,0 +1,45 @@
+{
+  "title": "Interiorismo y Materia",
+  "shortDescription": "Diseño interior integral, selección de texturas, mobiliario a medida e iluminación arquitectónica para espacios habitables y de hospitalidad.",
+  "lead": "El interiorismo no es ornamentación; es la escala táctil del espacio arquitectónico. Concebimos atmósferas continuas donde el lino, la madera maciza, la piedra volcánica y la penumbra dialogan armónicamente.",
+  "category": "Interiores y Mobiliario",
+  "deliverables": [
+    "Diseño de paleta material y moodboards táctiles",
+    "Planos de iluminación puntual e indirecta",
+    "Diseño y despiece de carpinterías a medida (cocinas, vestidores, librerías)",
+    "Catálogo de selección de mobiliario, tapicería y piezas de autor",
+    "Coordinación y montaje final en sitio"
+  ],
+  "phases": [
+    {
+      "step": "01",
+      "title": "Diagnóstico Atmosférico",
+      "description": "Análisis de la luz existente, acústica y rutinas diarias para proponer un esquema de zonificación y confort sensorial."
+    },
+    {
+      "step": "02",
+      "title": "Muestreo y Texturas",
+      "description": "Presentación de muestras físicas: maderas tratadas al aceite, calicanto, piedras cantera y textiles naturales."
+    },
+    {
+      "step": "03",
+      "title": "Detalle y Carpintería",
+      "description": "Desarrollo técnico de cada elemento de mobiliario fijo para su fabricación artesanal en talleres locales."
+    },
+    {
+      "step": "04",
+      "title": "Curaduría y Montaje",
+      "description": "Instalación coordinada de luminarias, piezas de arte, textiles y elementos decorativos con criterio austero y preciso."
+    }
+  ],
+  "requiredMaterials": [
+    "Planos arquitectónicos del espacio existente",
+    "Fotografías del estado actual y cotas de techos",
+    "Requerimientos de almacenamiento y hábitos de uso"
+  ],
+  "coverImage": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80",
+  "featuredProjectsSlugs": [
+    "estudio-tamarindos"
+  ],
+  "ctaLabel": "Consultar intervención de interiores"
+}

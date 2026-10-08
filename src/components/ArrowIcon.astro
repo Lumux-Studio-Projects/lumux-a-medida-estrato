@@ -1,0 +1,5 @@
+---
+interface Props { direction?: 'diagonal' | 'right' | 'down' | 'left' }
+const { direction = 'diagonal' } = Astro.props;
+---
+<span class:list={['arrow-frame', `arrow-${direction}`]} aria-hidden="true"><svg class="arrow-icon" viewBox="0 0 24 24" fill="none"><g class="arrow-primary"><path d="M5 19 19 5M5 5h14v14" /></g><g class="arrow-secondary"><path d="M5 19 19 5M5 5h14v14" /></g></svg></span>

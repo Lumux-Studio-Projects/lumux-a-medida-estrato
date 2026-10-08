@@ -1,0 +1,578 @@
+---
+// BioclimaticSectionDiagram.astro
+// Diagrama vectorial SVG interactivo y animado que ilustra el corte bioclimático
+// de un proyecto residencial con asoleamiento, ventilación cruzada y captación.
+---
+
+<div class="bioclimatic-diagram-container" id="bioclimaticDiagramWrapper">
+  <!-- Cabecera técnica del corte -->
+  <div class="diagram-toolbar">
+    <div class="toolbar-meta">
+      <span class="toolbar-badge">CORTE TÉCNICO B-B'</span>
+      <span class="toolbar-scale">ESCALA 1:75 · ESTUDIO BIOCLIMÁTICO PASIVO</span>
+    </div>
+    <div class="toolbar-controls">
+      <button type="button" class="ctrl-filter active" data-flow="all">Sistema Integral</button>
+      <button type="button" class="ctrl-filter" data-flow="sun">Asoleamiento</button>
+      <button type="button" class="ctrl-filter" data-flow="air">Ventilación</button>
+      <button type="button" class="ctrl-filter" data-flow="water">Captación</button>
+    </div>
+  </div>
+
+  <!-- Contenedor del SVG con marco arquitectónico -->
+  <div class="diagram-canvas-wrap">
+    <svg 
+      class="architectural-svg" 
+      viewBox="0 0 1100 580" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="Corte esquemático arquitectónico que demuestra el funcionamiento bioclimático pasivo"
+    >
+      <defs>
+        <!-- Gradientes para flujos de aire y sol -->
+        <linearGradient id="sunRayGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#E0A96D" stop-opacity="0.85" />
+          <stop offset="100%" stop-color="#E0A96D" stop-opacity="0.1" />
+        </linearGradient>
+
+        <linearGradient id="airFlowGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#3A86FF" stop-opacity="0.8" />
+          <stop offset="100%" stop-color="#64DFDF" stop-opacity="0.95" />
+        </linearGradient>
+
+        <linearGradient id="waterFlowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#0077B6" stop-opacity="0.8" />
+          <stop offset="100%" stop-color="#0096C7" stop-opacity="0.2" />
+        </linearGradient>
+
+        <!-- Patrón de retícula milimétrica -->
+        <pattern id="archGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-opacity="0.06" stroke-width="0.75"/>
+          <circle cx="20" cy="20" r="0.8" fill="currentColor" fill-opacity="0.12" />
+        </pattern>
+      </defs>
+
+      <!-- Fondo con retícula de dibujo técnico -->
+      <rect width="1100" height="580" fill="var(--color-bg-card)" />
+      <rect width="1100" height="580" fill="url(#archGrid)" />
+
+      <!-- Líneas de cota y niveles de rasante -->
+      <g class="dim-lines" stroke="currentColor" stroke-opacity="0.3" stroke-width="0.8" stroke-dasharray="3 3">
+        <line x1="80" y1="460" x2="1040" y2="460" />
+        <line x1="80" y1="280" x2="1040" y2="280" />
+        <line x1="80" y1="140" x2="1040" y2="140" />
+      </g>
+
+      <!-- Textos de cotas de nivel -->
+      <g class="level-marks" fill="currentColor" fill-opacity="0.55" font-family="var(--font-mono)" font-size="10">
+        <text x="90" y="454">N.P.T. +0.00 m (PLANTA BAJA)</text>
+        <text x="90" y="274">N.P.T. +3.60 m (NIVEL ALTO)</text>
+        <text x="90" y="134">N.P.T. +6.80 m (CUBIERTA / ALERO)</text>
+        <text x="90" y="540">NIVEL CISTERNA -2.40 m</text>
+      </g>
+
+      <!-- TERRENO Y CIMENTACIÓN -->
+      <!-- Suelo natural y estrato geológico -->
+      <path d="M 60 460 L 320 460 L 320 560 L 60 560 Z" fill="currentColor" fill-opacity="0.04" />
+      <path d="M 880 460 L 1040 460 L 1040 560 L 880 560 Z" fill="currentColor" fill-opacity="0.04" />
+      <!-- Línea de tierra con textura -->
+      <line x1="60" y1="460" x2="1040" y2="460" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+
+      <!-- ESTRUCTURA ARQUITECTÓNICA (Muros, losas, aleros) -->
+      <!-- Cimentación y muros soterrados -->
+      <rect x="320" y="460" width="560" height="90" fill="currentColor" fill-opacity="0.03" stroke="currentColor" stroke-width="1.2" />
+
+      <!-- Cisterna pluvial soterrada -->
+      <g class="flow-water-layer">
+        <rect x="740" y="475" width="120" height="65" rx="4" fill="url(#waterFlowGrad)" stroke="#0077B6" stroke-width="1.2" />
+        <text x="755" y="512" fill="#FFFFFF" font-family="var(--font-mono)" font-size="9" font-weight="600">ALJIBE 12,000L</text>
+      </g>
+
+      <!-- Muros de basalto y estructura portante (corte negro) -->
+      <!-- Muro izquierdo (Sur - Protegido) -->
+      <rect x="320" y="280" width="22" height="180" fill="currentColor" fill-opacity="0.85" />
+      <rect x="320" y="140" width="22" height="140" fill="currentColor" fill-opacity="0.85" />
+
+      <!-- Losa entrepiso con voladizo -->
+      <rect x="320" y="280" width="400" height="16" fill="currentColor" fill-opacity="0.75" />
+
+      <!-- Losa de cubierta con alero bioclimático saliente hacia el sur (izq) -->
+      <polygon points="230,132 760,132 760,148 230,148" fill="currentColor" fill-opacity="0.88" />
+      <!-- Alero detalle -->
+      <line x1="230" y1="140" x2="320" y2="140" stroke="currentColor" stroke-width="3" />
+
+      <!-- Muro de inercia térmica central (Piedra basáltica maciza) -->
+      <rect x="580" y="148" width="34" height="312" fill="var(--color-accent)" fill-opacity="0.85" />
+      <text x="597" y="310" fill="#FFFFFF" font-family="var(--font-mono)" font-size="9" writing-mode="vertical-rl" text-anchor="middle" letter-spacing="2">MURO TÉRMICO BASALTO</text>
+
+      <!-- Muro derecho (Norte - Patio y captación) -->
+      <rect x="858" y="280" width="22" height="180" fill="currentColor" fill-opacity="0.85" />
+      <rect x="858" y="140" width="22" height="140" fill="currentColor" fill-opacity="0.85" />
+
+      <!-- Cristalería y vanos (Líneas finas dobles) -->
+      <!-- Ventanal sur PB (protegido por alero) -->
+      <line x1="342" y1="360" x2="342" y2="460" stroke="#3A86FF" stroke-width="2.5" stroke-opacity="0.7" />
+      <!-- Ventana alta norte (efecto chimenea) -->
+      <line x1="858" y1="160" x2="858" y2="230" stroke="#3A86FF" stroke-width="2.5" stroke-opacity="0.7" />
+
+      <!-- Patio interior con espejo de agua refrescante (izq/norte) -->
+      <rect x="180" y="445" width="130" height="15" rx="3" fill="#3A86FF" fill-opacity="0.25" stroke="#3A86FF" stroke-width="1" />
+      <text x="200" y="456" fill="currentColor" font-family="var(--font-mono)" font-size="9">PATIO DE AGUA</text>
+
+      <!-- 1. CAPA DE ASOLEAMIENTO (Rayos solares animados) -->
+      <g class="flow-sun-layer">
+        <!-- Solsticio de Verano (Ángulo alto 68° bloqueado por el alero) -->
+        <g class="sun-summer">
+          <circle cx="160" cy="70" r="22" fill="#E0A96D" fill-opacity="0.25" stroke="#E0A96D" stroke-width="1.5" />
+          <circle cx="160" cy="70" r="10" fill="#E0A96D" />
+          <text x="190" y="65" fill="var(--color-accent)" font-family="var(--font-mono)" font-size="10" font-weight="600">SOL DE VERANO (68°)</text>
+          <text x="190" y="80" fill="currentColor" fill-opacity="0.6" font-family="var(--font-mono)" font-size="9">Alero bloquea radiación directa</text>
+          <!-- Rayos de verano que rebotan en el alero sin entrar -->
+          <line x1="175" y1="85" x2="250" y2="135" stroke="#E0A96D" stroke-width="2" stroke-dasharray="4 3" class="dash-ray" />
+          <line x1="190" y1="95" x2="295" y2="135" stroke="#E0A96D" stroke-width="2" stroke-dasharray="4 3" class="dash-ray" />
+          <!-- Sombra proyectada bajo el alero -->
+          <polygon points="230,148 342,460 342,148" fill="#E0A96D" fill-opacity="0.05" />
+        </g>
+
+        <!-- Solsticio de Invierno (Ángulo bajo 35° que penetra y calienta el muro térmico) -->
+        <g class="sun-winter">
+          <circle cx="100" cy="210" r="18" fill="#E0A96D" fill-opacity="0.2" stroke="#E0A96D" stroke-width="1.2" />
+          <circle cx="100" cy="210" r="8" fill="#E0A96D" />
+          <text x="70" y="245" fill="var(--color-accent)" font-family="var(--font-mono)" font-size="10" font-weight="600">SOL DE INVIERNO (35°)</text>
+          <text x="70" y="260" fill="currentColor" fill-opacity="0.6" font-family="var(--font-mono)" font-size="9">Penetra y carga el muro de masa</text>
+          <!-- Rayos de invierno entrando al interior -->
+          <line x1="118" y1="215" x2="342" y2="380" stroke="#E0A96D" stroke-width="2" stroke-dasharray="5 3" class="dash-ray-fast" />
+          <line x1="125" y1="225" x2="580" y2="430" stroke="#E0A96D" stroke-width="2" stroke-dasharray="5 3" class="dash-ray-fast" />
+        </g>
+      </g>
+
+      <!-- 2. CAPA DE VENTILACIÓN CRUZADA (Curvas fluidas animadas) -->
+      <g class="flow-air-layer">
+        <!-- Entrada de brisa fresca desde el patio con vegetación y agua -->
+        <path 
+          d="M 140 435 Q 260 435 342 410 Q 460 380 575 390 Q 680 400 750 340 Q 820 280 858 200 Q 880 150 940 140" 
+          fill="none" 
+          stroke="url(#airFlowGrad)" 
+          stroke-width="3.5" 
+          stroke-linecap="round" 
+          stroke-dasharray="10 8" 
+          class="animated-air-path"
+        />
+        <path 
+          d="M 170 420 Q 280 420 360 395 Q 480 370 575 360 Q 690 350 780 260 Q 830 200 865 170" 
+          fill="none" 
+          stroke="url(#airFlowGrad)" 
+          stroke-width="2.5" 
+          stroke-opacity="0.75" 
+          stroke-linecap="round" 
+          stroke-dasharray="8 6" 
+          class="animated-air-path-delay"
+        />
+
+        <!-- Etiquetas de flujo de aire -->
+        <g fill="#3A86FF" font-family="var(--font-mono)" font-size="9">
+          <text x="210" y="415">↑ BRISA FRESCA PATIO</text>
+          <text x="720" y="240">↑ EFECTO CHIMENEA (CONVECCIÓN NATURAL)</text>
+          <text x="890" y="165">SALIDA DE AIRE CÁLIDO →</text>
+        </g>
+      </g>
+
+      <!-- 3. CAPA DE CAPTACIÓN PLUVIAL (Bajante de techo a cisterna) -->
+      <g class="flow-water-layer">
+        <!-- Pendiente de cubierta y canalón -->
+        <path d="M 240 132 L 760 136 L 760 148 L 740 148" fill="none" stroke="#0077B6" stroke-width="1.8" />
+        <!-- Bajante pluvial vertical -->
+        <line x1="758" y1="148" x2="758" y2="475" stroke="#0077B6" stroke-width="2.5" stroke-dasharray="6 4" class="dash-water" />
+        <text x="768" y="380" fill="#0077B6" font-family="var(--font-mono)" font-size="9">BAJANTE PLUVIAL (FILTRO CICLÓNICO) ↓</text>
+      </g>
+
+      <!-- HOTSPOTS INTERACTIVOS NUMERADOS (HITBOX ESTABLE SIN TEMBLOR) -->
+      <!-- Hotspot 01: Alero -->
+      <g class="diagram-hotspot active" data-info="01" transform="translate(230, 140)">
+        <circle cx="0" cy="0" r="22" fill="transparent" class="hotspot-hitbox" />
+        <circle cx="0" cy="0" r="18" fill="none" stroke="var(--color-accent)" stroke-width="1.2" class="pulse-ring" />
+        <circle cx="0" cy="0" r="14" fill="var(--color-bg-card)" stroke="var(--color-accent)" stroke-width="2" class="hotspot-bg" />
+        <text x="0" y="4" fill="var(--color-accent)" font-family="var(--font-mono)" font-size="10" font-weight="700" text-anchor="middle" class="hotspot-text">01</text>
+      </g>
+
+      <!-- Hotspot 02: Inercia Basalto -->
+      <g class="diagram-hotspot" data-info="02" transform="translate(597, 230)">
+        <circle cx="0" cy="0" r="22" fill="transparent" class="hotspot-hitbox" />
+        <circle cx="0" cy="0" r="18" fill="none" stroke="var(--color-accent)" stroke-width="1.2" class="pulse-ring" />
+        <circle cx="0" cy="0" r="14" fill="var(--color-bg-card)" stroke="var(--color-accent)" stroke-width="2" class="hotspot-bg" />
+        <text x="0" y="4" fill="var(--color-accent)" font-family="var(--font-mono)" font-size="10" font-weight="700" text-anchor="middle" class="hotspot-text">02</text>
+      </g>
+
+      <!-- Hotspot 03: Chimenea Convectiva -->
+      <g class="diagram-hotspot" data-info="03" transform="translate(858, 195)">
+        <circle cx="0" cy="0" r="22" fill="transparent" class="hotspot-hitbox" />
+        <circle cx="0" cy="0" r="18" fill="none" stroke="var(--color-accent)" stroke-width="1.2" class="pulse-ring" />
+        <circle cx="0" cy="0" r="14" fill="var(--color-bg-card)" stroke="var(--color-accent)" stroke-width="2" class="hotspot-bg" />
+        <text x="0" y="4" fill="var(--color-accent)" font-family="var(--font-mono)" font-size="10" font-weight="700" text-anchor="middle" class="hotspot-text">03</text>
+      </g>
+
+      <!-- Hotspot 04: Cisterna / Captación -->
+      <g class="diagram-hotspot" data-info="04" transform="translate(740, 510)">
+        <circle cx="0" cy="0" r="22" fill="transparent" class="hotspot-hitbox" />
+        <circle cx="0" cy="0" r="18" fill="none" stroke="#0077B6" stroke-width="1.2" class="pulse-ring" />
+        <circle cx="0" cy="0" r="14" fill="var(--color-bg-card)" stroke="#0077B6" stroke-width="2" class="hotspot-bg" />
+        <text x="0" y="4" fill="#0077B6" font-family="var(--font-mono)" font-size="10" font-weight="700" text-anchor="middle" class="hotspot-text">04</text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Fichas explicativas de los 4 componentes técnicos -->
+  <div class="diagram-legend-grid">
+    <div class="legend-card active" data-target="01">
+      <div class="legend-num">01</div>
+      <div class="legend-content">
+        <h4 class="legend-title">Alero Calibrado de Hormigón</h4>
+        <p class="legend-text">
+          Calculado con geometría solar exacta para bloquear el 100% de radiación directa en solsticio de verano, reduciendo la carga térmica interior sin necesidad de persianas mecánicas.
+        </p>
+      </div>
+    </div>
+
+    <div class="legend-card" data-target="02">
+      <div class="legend-num">02</div>
+      <div class="legend-content">
+        <h4 class="legend-title">Muro Central de Inercia Térmica</h4>
+        <p class="legend-text">
+          Muro macizo de basalto de 34 cm de espesor. Absorbe el calor en invierno y modula las oscilaciones de temperatura día-noche garantizando confort interior constante a 21 °C.
+        </p>
+      </div>
+    </div>
+
+    <div class="legend-card" data-target="03">
+      <div class="legend-num">03</div>
+      <div class="legend-content">
+        <h4 class="legend-title">Efecto Chimenea & Ventilación Cruzada</h4>
+        <p class="legend-text">
+          El aire fresco del patio con agua entra a cota baja; al ganar temperatura asciende naturalmente y se evacua por los claraboyos altos, renovando el aire 4.2 veces por hora.
+        </p>
+      </div>
+    </div>
+
+    <div class="legend-card" data-target="04">
+      <div class="legend-num">04</div>
+      <div class="legend-content">
+        <h4 class="legend-title">Captación y Filtrado Ciclónico</h4>
+        <p class="legend-text">
+          El 100% del área de cubierta conduce el agua de lluvia hacia un aljibe de 12,000 L tras pasar por separación de primeras aguas, proveyendo riego y sanitarios por 7 meses al año.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .bioclimatic-diagram-container {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.05);
+  }
+
+  .diagram-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .toolbar-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .toolbar-badge {
+    background-color: var(--color-accent);
+    color: #FFFFFF;
+    font-family: var(--font-mono);
+    font-size: 0.725rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-xs);
+    letter-spacing: 0.06em;
+  }
+
+  .toolbar-scale {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.05em;
+  }
+
+  .toolbar-controls {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .ctrl-filter {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    border-radius: var(--radius-xs);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .ctrl-filter:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-text-primary);
+  }
+
+  .ctrl-filter.active {
+    background-color: var(--color-text-primary);
+    color: var(--color-bg-primary);
+    border-color: var(--color-text-primary);
+  }
+
+  .diagram-canvas-wrap {
+    position: relative;
+    width: 100%;
+    background-color: var(--color-bg-card);
+    overflow: hidden;
+  }
+
+  .architectural-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 1100 / 580;
+  }
+
+  /* Animaciones CSS de flujos SVG */
+  .animated-air-path {
+    animation: flowDash 2.5s linear infinite;
+  }
+
+  .animated-air-path-delay {
+    animation: flowDash 3s linear infinite reverse;
+  }
+
+  .dash-ray {
+    animation: dashPulse 2s ease-in-out infinite;
+  }
+
+  .dash-ray-fast {
+    animation: dashPulse 1.4s ease-in-out infinite;
+  }
+
+  .dash-water {
+    animation: flowWater 1.8s linear infinite;
+  }
+
+  .pulse-ring {
+    pointer-events: none;
+    animation: ringGlowFade 2.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes flowDash {
+    from {
+      stroke-dashoffset: 36;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes flowWater {
+    from {
+      stroke-dashoffset: 20;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes dashPulse {
+    0%, 100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ringGlowFade {
+    0% {
+      opacity: 0.25;
+      stroke-width: 1px;
+    }
+    100% {
+      opacity: 0.85;
+      stroke-width: 1.6px;
+    }
+  }
+
+  /* Hotspots interactivos: fijos sin transform scale para evitar temblores */
+  .diagram-hotspot {
+    cursor: pointer;
+  }
+
+  .diagram-hotspot .hotspot-hitbox {
+    pointer-events: all;
+    cursor: pointer;
+  }
+
+  .diagram-hotspot .hotspot-bg {
+    transition: fill 0.2s ease, stroke-width 0.2s ease, filter 0.2s ease;
+    pointer-events: none;
+  }
+
+  .diagram-hotspot .hotspot-text {
+    transition: fill 0.2s ease;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .diagram-hotspot:hover .hotspot-bg,
+  .diagram-hotspot.active .hotspot-bg {
+    fill: var(--color-accent);
+    stroke-width: 2.5px;
+    filter: drop-shadow(0 0 8px rgba(163, 76, 43, 0.45));
+  }
+
+  .diagram-hotspot[data-info="04"]:hover .hotspot-bg,
+  .diagram-hotspot[data-info="04"].active .hotspot-bg {
+    fill: #0077B6;
+    stroke-width: 2.5px;
+    filter: drop-shadow(0 0 8px rgba(0, 119, 182, 0.45));
+  }
+
+  .diagram-hotspot:hover .hotspot-text,
+  .diagram-hotspot.active .hotspot-text {
+    fill: #FFFFFF;
+  }
+
+  /* Cuadrícula de fichas técnicas al pie */
+  .diagram-legend-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-bg-secondary);
+  }
+
+  @media (min-width: 768px) {
+    .diagram-legend-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .diagram-legend-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .legend-card {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-border-light);
+    border-right: 1px solid var(--color-border-light);
+    display: flex;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .legend-card:hover,
+  .legend-card.active {
+    background-color: var(--color-bg-card);
+  }
+
+  .legend-card.active {
+    border-top: 2px solid var(--color-accent);
+  }
+
+  .legend-num {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+    padding-top: 0.2rem;
+  }
+
+  .legend-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .legend-text {
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const root = document.getElementById('bioclimaticDiagramWrapper');
+    if (!root) return;
+
+    const filterBtns = root.querySelectorAll('.ctrl-filter');
+    const sunLayer = root.querySelector('.flow-sun-layer');
+    const airLayer = root.querySelector('.flow-air-layer');
+    const waterLayers = root.querySelectorAll('.flow-water-layer');
+    const legendCards = root.querySelectorAll('.legend-card');
+    const hotspots = root.querySelectorAll('.diagram-hotspot');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const flow = btn.getAttribute('data-flow');
+        if (sunLayer) sunLayer.style.display = (flow === 'all' || flow === 'sun') ? 'block' : 'none';
+        if (airLayer) airLayer.style.display = (flow === 'all' || flow === 'air') ? 'block' : 'none';
+        waterLayers.forEach(wl => {
+          wl.style.display = (flow === 'all' || flow === 'water') ? 'block' : 'none';
+        });
+      });
+    });
+
+    const setActiveItem = (id) => {
+      if (!id) return;
+      legendCards.forEach(c => {
+        c.classList.toggle('active', c.getAttribute('data-target') === id);
+      });
+      hotspots.forEach(h => {
+        h.classList.toggle('active', h.getAttribute('data-info') === id);
+      });
+    };
+
+    legendCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        setActiveItem(card.getAttribute('data-target'));
+      });
+      card.addEventListener('click', () => {
+        setActiveItem(card.getAttribute('data-target'));
+      });
+    });
+
+    hotspots.forEach(spot => {
+      spot.addEventListener('mouseenter', () => {
+        setActiveItem(spot.getAttribute('data-info'));
+      });
+      spot.addEventListener('click', () => {
+        setActiveItem(spot.getAttribute('data-info'));
+      });
+    });
+  })();
+</script>

@@ -1,0 +1,396 @@
+---
+import ArrowIcon from './ArrowIcon.astro';
+interface Props {
+  defaultService?: string;
+}
+
+const { defaultService = "" } = Astro.props;
+---
+
+<div class="contact-form-wrapper" id="contactFormWrapper">
+  <!-- Aviso ético y técnico de entorno de demostración -->
+  <div class="demo-form-notice" role="note">
+    <div class="notice-icon" aria-hidden="true">ℹ</div>
+    <div class="notice-text">
+      <strong>Formulario de demostración.</strong> Puedes probarlo: tus datos no se envían ni se guardan.
+    </div>
+  </div>
+
+  <form class="interactive-form" id="contactForm" novalidate>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="clientName">Nombre y apellidos <span class="required">*</span></label>
+        <input 
+          type="text" 
+          id="clientName" aria-describedby="errorName" aria-required="true" 
+          name="name" 
+          placeholder="Ej. Arq. Claudia Mendoza" 
+          required 
+          autocomplete="name"
+        />
+        <span class="field-error" id="errorName">Por favor introduce tu nombre.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="clientEmail">Correo electrónico <span class="required">*</span></label>
+        <input 
+          type="email" 
+          id="clientEmail" aria-describedby="errorEmail" aria-required="true" 
+          name="email" 
+          placeholder="correo@ejemplo.com" 
+          required 
+          autocomplete="email"
+        />
+        <span class="field-error" id="errorEmail">Por favor introduce un correo electrónico válido.</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="projectType">Disciplina o servicio solicitado <span class="required">*</span></label>
+        <select id="projectType" aria-describedby="errorService" aria-required="true" name="service" required>
+          <option value="">Selecciona una disciplina...</option>
+          <option value="arquitectura-residencial" selected={defaultService === "arquitectura-residencial"}>
+            Arquitectura Residencial (Vivienda Nueva o Ampliación)
+          </option>
+          <option value="interiorismo-y-materia" selected={defaultService === "interiorismo-y-materia"}>
+            Interiorismo y Materia (Intervención Integral)
+          </option>
+          <option value="consultoria-patrimonial" selected={defaultService === "consultoria-patrimonial"}>
+            Consultoría Patrimonial y Restauración
+          </option>
+          <option value="otro">Otro encargo especial</option>
+        </select>
+        <span class="field-error" id="errorService">Por favor selecciona un tipo de servicio.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="projectLocation">Ubicación aproximada del predio</label>
+        <input 
+          type="text" 
+          id="projectLocation" 
+          name="location" 
+          placeholder="Ej. Valle de Bravo / CDMX / Oaxaca" 
+        />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="budgetRange">Presupuesto estimado de obra (MXN)</label>
+        <select id="budgetRange" name="budget">
+          <option value="">Rango aproximado (opcional)...</option>
+          <option value="3-6m">$3,000,000 - $6,000,000 MXN</option>
+          <option value="6-12m">$6,000,000 - $12,000,000 MXN</option>
+          <option value="12m+">Más de $12,000,000 MXN</option>
+          <option value="por-definir">Por definir en anteproyecto</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="timeline">Tiempo estimado para inicio</label>
+        <select id="timeline" name="timeline">
+          <option value="">Plazo estimado (opcional)...</option>
+          <option value="inmediato">Inmediato (1 a 2 meses)</option>
+          <option value="medio">3 a 6 meses</option>
+          <option value="futuro">Más de 6 meses / Planificación</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="projectNotes">Detalles del encargo, programa o visión <span class="required">*</span></label>
+      <textarea 
+        id="projectNotes" aria-describedby="errorNotes" aria-required="true" 
+        name="notes" 
+        rows="4" 
+        placeholder="Descríbenos las intenciones del proyecto, superficie aproximada, requerimientos familiares o características particulares del terreno..." 
+        required
+      ></textarea>
+      <span class="field-error" id="errorNotes">Describe tu proyecto con al menos 10 caracteres.</span>
+    </div>
+
+    <div class="form-footer">
+      <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
+        Probar consulta <ArrowIcon />
+      </button>
+      <span class="form-caption">
+        Los campos con * son obligatorios. Esta consulta es una simulación.
+      </span>
+    </div>
+  </form>
+
+  <!-- Estado de resultado de la simulación -->
+  <div class="demo-feedback-card" id="demoFeedback" role="status" tabindex="-1" hidden>
+    <div class="feedback-badge">Consulta de demostración</div>
+    <h3 class="feedback-title">Tu proyecto, en sus primeras líneas.</h3>
+    <p class="feedback-desc">
+      Este es el resumen de tu consulta de prueba. No se ha enviado ni guardado la información.
+    </p>
+
+    <div class="summary-box">
+      <h4 class="summary-heading">Resumen de tu proyecto:</h4>
+      <dl class="summary-list" id="capturedDataList"></dl>
+    </div>
+
+    <button type="button" class="btn btn-secondary" id="resetDemoFormBtn">
+      Probar otra consulta
+    </button>
+  </div>
+</div>
+
+<style>
+  .contact-form-wrapper {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xs);
+    padding: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .demo-form-notice {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    background-color: var(--color-surface-muted);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius-xs);
+    margin-bottom: 2rem;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+  }
+
+  .notice-icon {
+    color: var(--color-accent);
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  .interactive-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .form-row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-primary);
+  }
+
+  .required {
+    color: var(--color-accent);
+  }
+
+  input, select, textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    padding: 0.85rem 1rem;
+    font-size: 0.9375rem;
+    color: var(--color-text-primary);
+    border-radius: var(--radius-xs);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23C07D53' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px var(--color-accent-light);
+  }
+
+  .field-error {
+    font-size: 0.75rem;
+    color: var(--color-error);
+    display: none;
+  }
+
+  .has-error input,
+  .has-error select,
+  .has-error textarea {
+    border-color: var(--color-error);
+  }
+
+  .has-error .field-error {
+    display: block;
+  }
+
+  .form-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  @media (min-width: 640px) {
+    .form-footer {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .form-caption {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Feedback Card */
+  .demo-feedback-card {
+    padding: 2rem;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xs);
+    animation: fadeInFeedback 0.3s ease;
+  }
+
+  .demo-feedback-card[hidden] {
+    display: none;
+  }
+
+  @keyframes fadeInFeedback {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .feedback-badge {
+    display: inline-block;
+    background-color: var(--color-accent-light);
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.625rem;
+    border-radius: var(--radius-xs);
+    margin-bottom: 0.75rem;
+  }
+
+  .feedback-title {
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .feedback-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .summary-box {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-light);
+    padding: 1.25rem;
+    border-radius: var(--radius-xs);
+    margin-bottom: 1.5rem;
+  }
+
+  .summary-heading {
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .summary-list {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .summary-list dt {
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  .summary-list dd {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+</style>
+
+<script is:inline>
+(() => {
+ const form = document.getElementById('contactForm');
+ const feedback = document.getElementById('demoFeedback');
+ const capturedList = document.getElementById('capturedDataList');
+ const select = document.getElementById('projectType');
+ const service = new URLSearchParams(location.search).get('servicio');
+ if (service && Array.from(select.options).some(o => o.value === service)) select.value = service;
+ const ids = ['clientName','clientEmail','projectType','projectNotes'];
+ const validate = input => {
+  const valid = input.id === 'projectNotes' ? input.value.trim().length >= 10 : input.value.trim() !== '' && input.checkValidity();
+  input.closest('.form-group').classList.toggle('has-error', !valid);
+  input.setAttribute('aria-invalid', String(!valid));
+  return valid;
+ };
+ ids.forEach(id => {
+  const input = document.getElementById(id);
+  input.addEventListener('blur', () => validate(input));
+  input.addEventListener('input', () => { if (input.getAttribute('aria-invalid') === 'true') validate(input); });
+  input.addEventListener('change', () => { if (input.getAttribute('aria-invalid') === 'true') validate(input); });
+ });
+ form.addEventListener('submit', e => {
+  e.preventDefault();
+  const results = ids.map(id => validate(document.getElementById(id)));
+  if (results.some(valid => !valid)) { document.getElementById(ids[results.indexOf(false)]).focus(); return; }
+  const data = new FormData(form);
+  capturedList.replaceChildren();
+  [['Solicitante', data.get('name')], ['Email', data.get('email')], ['Servicio', select.selectedOptions[0].textContent.trim()], ['Ubicación', data.get('location') || 'Por definir'], ['Presupuesto', data.get('budget') || 'Por definir'], ['Notas', data.get('notes')]].forEach(([label,value]) => {
+   const dt = document.createElement('dt'); dt.textContent = label;
+   const dd = document.createElement('dd'); dd.textContent = value;
+   capturedList.append(dt,dd);
+  });
+  form.hidden = true; feedback.hidden = false; feedback.focus();
+ });
+ document.getElementById('resetDemoFormBtn').addEventListener('click', () => {
+  form.reset(); if(service) select.value = service;
+  ids.forEach(id => { const input = document.getElementById(id); input.removeAttribute('aria-invalid'); input.closest('.form-group').classList.remove('has-error'); });
+  capturedList.replaceChildren(); feedback.hidden = true; form.hidden = false;
+  document.getElementById('clientName').focus();
+ });
+})();
+</script>
